@@ -1,4 +1,4 @@
-import ToDoApp from './ToDoApp';
+import ToDoit from '.';
 import React from 'react';
 import { shallow } from "enzyme";
 import { act } from "react-dom/test-utils";
@@ -26,17 +26,17 @@ beforeEach(() => {
 
 afterEach(() => {
   jest.clearAllMocks();
-});
+}); 
 
 test("does not renders list tab if lists has not loaded", () => {
-  render(<ToDoApp />);
+  render(<ToDoit />);
 
   expect(screen.getByRole('list')).toHaveTextContent("");
 });
 
 test("renders ToDo lists titles in reverse order", async () => {
   await act(async () => {
-    render(<ToDoApp />);
+    render(<ToDoit />);
   });
 
   const lists = screen.getAllByRole('list');
@@ -49,7 +49,7 @@ test("renders ToDo lists titles in reverse order", async () => {
 });
 
 test("changeActiveList changes activeList", async () => {
-  const wrapper = shallow(<ToDoApp/>);
+  const wrapper = shallow(<ToDoit/>);
 
   const testList = { "id": 1, "title": "Dummy Title", "items": 
         [ {"toDoItem": "First Item", "completed": false} ] }
@@ -60,10 +60,10 @@ test("changeActiveList changes activeList", async () => {
 })
 
 test("changes active list on click", async () => {
-  const wrapper = shallow(<ToDoApp/>);
+  const wrapper = shallow(<ToDoit/>);
 
   await act(async () => {
-    render(<ToDoApp />);
+    render(<ToDoit />);
   });
 
   wrapper.find('ul').first().simulate('click');
@@ -72,7 +72,7 @@ test("changes active list on click", async () => {
 })
 
 test("renders submit button", () => {
-  render(<ToDoApp />);
+  render(<ToDoit />);
 
   const button = screen.getByRole("button");
 
@@ -81,7 +81,7 @@ test("renders submit button", () => {
 })
 
 test("submit button is disabled if there is no active lists", () => {
-  render(<ToDoApp />);
+  render(<ToDoit />);
 
   const button = screen.getByRole("button");
 
@@ -89,10 +89,10 @@ test("submit button is disabled if there is no active lists", () => {
 })
 
 test("submit button is enabled if list is active", async () => {
-  const wrapper = shallow(<ToDoApp/>);
+  const wrapper = shallow(<ToDoit/>);
 
   await act(async () => {
-    render(<ToDoApp />);
+    render(<ToDoit />);
   });
 
   wrapper.find('ul').first().simulate('click');
@@ -101,11 +101,11 @@ test("submit button is enabled if list is active", async () => {
 })
 
 test("calls the putActiveList integration test", async () => {
-  const spy = jest.spyOn(ToDoApp.prototype, "putActiveList");
-  const wrapper = shallow(<ToDoApp/>);
+  const spy = jest.spyOn(ToDoit.prototype, "putActiveList");
+  const wrapper = shallow(<ToDoit/>);
 
   await act(async () => {
-    render(<ToDoApp />);
+    render(<ToDoit />);
   });
 
   expect(wrapper.find('button').prop('disabled')).toEqual(true);
@@ -116,14 +116,14 @@ test("calls the putActiveList integration test", async () => {
 
   wrapper.find("button").simulate("click");
 
-  expect(ToDoApp.prototype.putActiveList).toHaveBeenCalledTimes(1);
+  expect(ToDoit.prototype.putActiveList).toHaveBeenCalledTimes(1);
 })
 
 test("renders remove buttons for lists", async () => {
-  const wrapper = shallow(<ToDoApp/>);
+  const wrapper = shallow(<ToDoit/>);
 
   await act(async () => {
-    render(<ToDoApp />);
+    render(<ToDoit />);
   });
 
   const button = wrapper.find('img').first();
@@ -131,16 +131,16 @@ test("renders remove buttons for lists", async () => {
  })
 
 test("removes active list on click integration test", async () => {
-  const spy = jest.spyOn(ToDoApp.prototype, "deleteActiveList");
-  const wrapper = shallow(<ToDoApp/>);
+  const spy = jest.spyOn(ToDoit.prototype, "deleteActiveList");
+  const wrapper = shallow(<ToDoit/>);
 
   await act(async () => {
-    render(<ToDoApp />);
+    render(<ToDoit />);
   });
 
   const button = wrapper.find('img').first();
 
   button.simulate('click');
 
-  expect(ToDoApp.prototype.deleteActiveList).toHaveBeenCalledTimes(1);
+  expect(ToDoit.prototype.deleteActiveList).toHaveBeenCalledTimes(1);
 })

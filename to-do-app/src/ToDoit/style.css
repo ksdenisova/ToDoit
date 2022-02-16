@@ -1,0 +1,33 @@
+.main {
+  position: relative;
+  width: 1512px;
+  height: 982px;
+  background: #3F51B5;
+  display: grid;
+  grid-gap: 10px;
+}
+
+.header-box {
+  grid-column: 1;
+  grid-row: 1;
+  position: absolute;
+  width: 847px;
+  height: 338px;
+  left: 0px;
+  top: 41px;
+}
+
+.list-box {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.item-box {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.delete-button-box {
+  grid-column: 2;
+  grid-row: 3;
+}

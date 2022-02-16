@@ -1,9 +1,10 @@
-import ListView from './ListView/ListView';
-import NewList from './ListView/NewList';
-import './ToDoApp.css';
+import ListView from '../ListView/ListView';
+import NewList from '../ListView/NewList';
+import '../ToDoApp.css';
+import './style.css';
 import React, { Component } from 'react';
 
-class ToDoApp extends Component {
+class ToDoit extends Component {
   constructor(props) {
     super(props);
 
@@ -55,7 +56,7 @@ class ToDoApp extends Component {
   }
 
   deleteList() {
-    if (this.state.activeList == undefined) {
+    if (this.state.activeList === undefined) {
       return;
     }
 
@@ -102,7 +103,8 @@ class ToDoApp extends Component {
 
     return (
       <div className="App">
-        <header className="App-header">
+        <header className="main">
+          <h1 className="header-box">to doit</h1>
           <div className="Title-Bar">
             <a
               className="App-link"
@@ -116,16 +118,16 @@ class ToDoApp extends Component {
               {lists}
             </a>
           </div>
-          <div className='To-Do-View'>
+          <div className='To-Do-View item-box'>
             <ListView
               activeList = {this.state.activeList}
               saveActiveList = {this.saveActiveListHander}
             />
           </div>
-          <button className='Submit-Button' disabled={isDisabled} onClick={this.submitHandler}>Submit</button>
+          <button className='Submit-Button delete-button-box' disabled={isDisabled} onClick={this.submitHandler}>Submit</button>
         </header>
       </div>);
   }
 }
 
-export default ToDoApp;
+export default ToDoit;
