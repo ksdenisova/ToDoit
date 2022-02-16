@@ -105,7 +105,7 @@ class ToDoit extends Component {
       <div className="App">
         <header className="main">
           <h1 className="header-box">to doit</h1>
-          <div className="Title-Bar">
+          <div className="list-box">
             <a
               className="App-link"
               target="_blank"

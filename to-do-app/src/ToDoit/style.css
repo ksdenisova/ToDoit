@@ -5,6 +5,8 @@
   background: #3F51B5;
   display: grid;
   grid-gap: 10px;
+  font-family: Roboto;
+  font-style: normal;
 }
 
 .header-box {
@@ -15,16 +17,27 @@
   height: 338px;
   left: 0px;
   top: 41px;
+  font-weight: 800;
+  font-size: 288px;
+  line-height: 337px;
+  letter-spacing: 0.01em;
+  color: rgba(0, 0, 0, 0.15);
 }
 
 .list-box {
   grid-column: 1;
   grid-row: 2;
+  left: 197px;
+  top: 353px;
 }
 
 .item-box {
   grid-column: 2;
   grid-row: 2;
+  width: 746px;
+  height: 507px;
+  left: 613px;
+  top: 279px;
 }
 
 .delete-button-box {
