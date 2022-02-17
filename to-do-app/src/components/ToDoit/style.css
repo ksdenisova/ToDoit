@@ -1,17 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 .main {
   position: relative;
   width: 1512px;
   height: 982px;
   background: #3F51B5;
   display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 338px;
   grid-gap: 10px;
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
 }
 
 .header-box {
-  grid-column: 1;
   grid-row: 1;
+  grid-column: 1;
+  margin-top: 0mm;
   position: absolute;
   width: 847px;
   height: 338px;
@@ -34,13 +39,29 @@
 .item-box {
   grid-column: 2;
   grid-row: 2;
+  margin-top: 0mm;
   width: 746px;
   height: 507px;
   left: 613px;
   top: 279px;
+  background: #D2D3DC;
 }
 
-.delete-button-box {
+.button-box {
   grid-column: 2;
   grid-row: 3;
+}
+
+.my-lists-header {
+  margin-top: 0mm;
+  position: absolute;
+  width: 130px;
+  height: 42px;
+  left: 145px;
+  top: 280px;
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 42px;
+  letter-spacing: 0.01em;
+  color: #FFFFFF;
 }

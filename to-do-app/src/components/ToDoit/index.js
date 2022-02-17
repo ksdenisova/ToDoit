@@ -1,6 +1,6 @@
 import ListView from '../ListView/ListView';
 import NewList from '../ListView/NewList';
-import '../ToDoApp.css';
+import '../../ToDoApp.css';
 import './style.css';
 import React, { Component } from 'react';
 
@@ -102,30 +102,27 @@ class ToDoit extends Component {
       ): <ul></ul>;
 
     return (
-      <div className="App">
-        <header className="main">
-          <h1 className="header-box">to doit</h1>
-          <div className="list-box">
-            <a
-              className="App-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <NewList 
-                createList = {this.createNewListHandler}
-                getAllLists = {this.getAllListsHandler}
-              />
-              {lists}
-            </a>
-          </div>
-          <div className='To-Do-View item-box'>
-            <ListView
-              activeList = {this.state.activeList}
-              saveActiveList = {this.saveActiveListHander}
+      <div className="main">
+        <h1 className="header-box">to doit</h1>
+        <div className="list-box">
+          <h2 className="my-lists-header">my lists</h2>
+          <a
+            className="App-link"
+          >
+            <NewList 
+              createList = {this.createNewListHandler}
+              getAllLists = {this.getAllListsHandler}
             />
-          </div>
-          <button className='Submit-Button delete-button-box' disabled={isDisabled} onClick={this.submitHandler}>Submit</button>
-        </header>
+            {lists}
+          </a>
+        </div>
+        <div className='To-Do-View item-box'>
+          <ListView
+            activeList = {this.state.activeList}
+            saveActiveList = {this.saveActiveListHander}
+          />
+        </div>
+        <button className='Submit-Button button-box' disabled={isDisabled} onClick={this.submitHandler}>Submit</button>
       </div>);
   }
 }
