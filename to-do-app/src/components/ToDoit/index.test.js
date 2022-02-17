@@ -5,7 +5,7 @@ import { act } from "react-dom/test-utils";
 import { render, screen } from "@testing-library/react"
 
 beforeEach(() => {
-  const fakeJson = 
+  const testLists = 
    [
       { "id": 1, "title": "First Test Title", "items": [
         {"toDoItem": "First Item", "completed": false},
@@ -19,7 +19,7 @@ beforeEach(() => {
 
     jest.spyOn(global, "fetch").mockImplementation(() =>
     Promise.resolve({
-      json: () => Promise.resolve(fakeJson)
+      json: () => Promise.resolve(testLists)
     })
   );
 });
@@ -27,12 +27,6 @@ beforeEach(() => {
 afterEach(() => {
   jest.clearAllMocks();
 }); 
-
-test("does not renders list tab if lists has not loaded", () => {
-  render(<ToDoit />);
-
-  expect(screen.getByRole('list')).toHaveTextContent("");
-});
 
 test("renders ToDo lists titles in reverse order", async () => {
   await act(async () => {
@@ -59,18 +53,6 @@ test("changeActiveList changes activeList", async () => {
   expect(wrapper.state().activeList.title).toBe("Dummy Title");
 })
 
-test("changes active list on click", async () => {
-  const wrapper = shallow(<ToDoit/>);
-
-  await act(async () => {
-    render(<ToDoit />);
-  });
-
-  wrapper.find('ul').first().simulate('click');
- 
-  expect(wrapper.state().activeList.title).toBe("Second Test Title");
-})
-
 test("renders submit button", () => {
   render(<ToDoit />);
 
@@ -95,7 +77,7 @@ test("submit button is enabled if list is active", async () => {
     render(<ToDoit />);
   });
 
-  wrapper.find('ul').first().simulate('click');
+  wrapper.setState({ activeList: "some list" })
 
   expect(wrapper.find('button').prop('disabled')).toEqual(false);
 })
@@ -110,37 +92,11 @@ test("calls the putActiveList integration test", async () => {
 
   expect(wrapper.find('button').prop('disabled')).toEqual(true);
 
-  wrapper.find('ul').first().simulate('click');
+  wrapper.setState({ activeList: "some list" })
 
   expect(wrapper.find('button').prop('disabled')).toEqual(false);
 
   wrapper.find("button").simulate("click");
 
   expect(ToDoit.prototype.putActiveList).toHaveBeenCalledTimes(1);
-})
-
-test("renders remove buttons for lists", async () => {
-  const wrapper = shallow(<ToDoit/>);
-
-  await act(async () => {
-    render(<ToDoit />);
-  });
-
-  const button = wrapper.find('img').first();
-  expect(button.prop('src')).toEqual("./remove-list.png");
- })
-
-test("removes active list on click integration test", async () => {
-  const spy = jest.spyOn(ToDoit.prototype, "deleteActiveList");
-  const wrapper = shallow(<ToDoit/>);
-
-  await act(async () => {
-    render(<ToDoit />);
-  });
-
-  const button = wrapper.find('img').first();
-
-  button.simulate('click');
-
-  expect(ToDoit.prototype.deleteActiveList).toHaveBeenCalledTimes(1);
 })

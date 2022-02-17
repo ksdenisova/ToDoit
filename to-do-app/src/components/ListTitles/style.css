@@ -1,0 +1,22 @@
+.list-titles {
+  position: absolute;
+  width: 254px;
+  height: 33px;
+  left: 197px;
+  top: 353px;
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 33px;
+  letter-spacing: 0.01em;
+  color: #FFFFFF;
+}
+
+li::marker {
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  left: 165px;
+  top: 455px;
+  border: 3px solid #FFFFFF;
+  box-sizing: border-box;
+}
