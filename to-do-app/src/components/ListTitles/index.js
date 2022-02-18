@@ -23,11 +23,12 @@ class ListTitles extends Component {
 
       lists = titles.map(
         entry => 
-          <li key={entry}>
-            <img className= "List-Image" src="./remove-list.png" onClick={this.props.deleteActiveList}/>
-            <ul onClick={() => 
-              this.props.saveActiveList(this.filterLists(entry))}>{entry}</ul>
-          </li>
+          <ul key={entry}>
+            <li onClick={() => this.props.saveActiveList(this.filterLists(entry))}>
+              <img className= "List-Image" src="./remove-list.png" onClick={this.props.deleteActiveList}/>
+              <span>{entry}</span>
+            </li>
+          </ul>
         );
     }
 
@@ -37,8 +38,8 @@ class ListTitles extends Component {
           <div className="list-titles">
             {lists}
             <NewList 
-              createList = {this.createNewListHandler}
-              getAllLists = {this.getAllListsHandler}
+              createList = {this.props.createList}
+              getAllLists = {this.props.getAllLists}
             />
           </div>
       </div>);

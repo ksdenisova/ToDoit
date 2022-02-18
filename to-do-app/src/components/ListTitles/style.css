@@ -1,6 +1,5 @@
 .list-titles {
   position: absolute;
-  width: 254px;
   height: 33px;
   left: 197px;
   top: 353px;
@@ -11,12 +10,19 @@
   color: #FFFFFF;
 }
 
-li::marker {
-  position: absolute;
-  width: 17px;
-  height: 17px;
-  left: 165px;
-  top: 455px;
-  border: 3px solid #FFFFFF;
-  box-sizing: border-box;
+ul {
+  margin-top: 0;
+  margin-bottom: 14px;
+}
+
+::marker {
+  content: '○';
+}
+
+ul li {
+  padding-left: 0.5em;
+}
+
+li img {
+  padding-right: 15px;
 }

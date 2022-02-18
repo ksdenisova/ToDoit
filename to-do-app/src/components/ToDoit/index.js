@@ -96,6 +96,8 @@ class ToDoit extends Component {
             toDoLists = {this.state.toDoLists}
             saveActiveList = {this.saveActiveListHander}
             deleteActiveList = {this.deleteListHandler}
+            createList = {this.createNewListHandler}
+            getAllLists = {this.getAllListsHandler}
           />
         </div>
         <div className='To-Do-View item-box'>

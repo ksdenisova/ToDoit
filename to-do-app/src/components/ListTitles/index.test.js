@@ -24,7 +24,7 @@ test("changes active list on click", async () => {
       render(<ListTitles isLoaded={true} toDoLists={testLists} saveActiveList={saveActiveListMock}/>);
     });
 
-  wrapper.find('ul').first().simulate('click');
+  wrapper.find('li').first().simulate('click');
  
   expect(saveActiveListMock).toHaveBeenCalledTimes(1);
 })
