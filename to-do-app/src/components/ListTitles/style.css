@@ -15,8 +15,8 @@ ul {
   margin-bottom: 14px;
 }
 
-::marker {
-  content: '○';
+.list-titles > ul {
+  list-style-type: none;
 }
 
 ul li {
@@ -25,4 +25,11 @@ ul li {
 
 li img {
   padding-right: 15px;
+}
+
+.icon {
+  padding-right: 15px;
+  transform: scale(0.8);
+  stroke: #FFFFFF;
+  stroke-width: 2;
 }

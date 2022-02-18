@@ -2,6 +2,7 @@ import NewList from '../NewList';
 import '../../ToDoApp.css';
 import './style.css';
 import React, { Component } from 'react';
+import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 
 class ListTitles extends Component {
   filterLists(title) {
@@ -25,6 +26,7 @@ class ListTitles extends Component {
         entry => 
           <ul key={entry}>
             <li onClick={() => this.props.saveActiveList(this.filterLists(entry))}>
+              <CircleOutlinedIcon className="icon"/>
               <img className= "List-Image" src="./remove-list.png" onClick={this.props.deleteActiveList}/>
               <span>{entry}</span>
             </li>
