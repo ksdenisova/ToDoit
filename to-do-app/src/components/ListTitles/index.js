@@ -1,4 +1,4 @@
-import NewList from '../ListView/NewList';
+import NewList from '../NewList';
 import '../../ToDoApp.css';
 import './style.css';
 import React, { Component } from 'react';

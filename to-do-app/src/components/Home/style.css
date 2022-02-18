@@ -1,16 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
 .main {
   position: relative;
-  width: 1512px;
-  height: 982px;
+  min-height: 100vh;
   background: #3F51B5;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 338px;
   grid-gap: 10px;
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
 }
 
 .header-box {

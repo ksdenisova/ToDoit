@@ -1,7 +1,7 @@
 import React from 'react';
-import NewList from './NewList';
-import { render, screen, fireEvent, userEvent } from "@testing-library/react"
-import { shallow, mount } from "enzyme";
+import NewList from '.';
+import { render, screen } from "@testing-library/react"
+import { shallow } from "enzyme";
 
 test("renders add list button image", () => {
   render(<NewList />);

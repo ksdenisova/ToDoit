@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './style.css';
 
 class NewList extends Component {
   constructor(props) {
@@ -27,12 +28,14 @@ class NewList extends Component {
     return (
         <div className="list-titles">
             <img className="List-Image" src="./add-list.png" onClick={this.imageClickHandler}/>
-            <input 
-                className="Title-Input" type="text" 
+            <span> 
+              <input 
+                className="new-list" type="text" 
                 value= {this.state.inputValue} 
                 onChange={event => this.setState({inputValue: event.target.value})}
                 placeholder='Enter New List'>     
-            </input>
+              </input>
+            </span>
         </div>
     );
   }

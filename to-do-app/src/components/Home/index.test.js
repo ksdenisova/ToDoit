@@ -1,4 +1,4 @@
-import ToDoit from '.';
+import Home from '.';
 import React from 'react';
 import { shallow } from "enzyme";
 import { act } from "react-dom/test-utils";
@@ -30,7 +30,7 @@ afterEach(() => {
 
 test("renders ToDo lists titles in reverse order", async () => {
   await act(async () => {
-    render(<ToDoit />);
+    render(<Home />);
   });
 
   const lists = screen.getAllByRole('list');
@@ -43,7 +43,7 @@ test("renders ToDo lists titles in reverse order", async () => {
 });
 
 test("changeActiveList changes activeList", async () => {
-  const wrapper = shallow(<ToDoit/>);
+  const wrapper = shallow(<Home />);
 
   const testList = { "id": 1, "title": "Dummy Title", "items": 
         [ {"toDoItem": "First Item", "completed": false} ] }
@@ -54,7 +54,7 @@ test("changeActiveList changes activeList", async () => {
 })
 
 test("renders submit button", () => {
-  render(<ToDoit />);
+  render(<Home />);
 
   const button = screen.getByRole("button");
 
@@ -63,7 +63,7 @@ test("renders submit button", () => {
 })
 
 test("submit button is disabled if there is no active lists", () => {
-  render(<ToDoit />);
+  render(<Home />);
 
   const button = screen.getByRole("button");
 
@@ -71,10 +71,10 @@ test("submit button is disabled if there is no active lists", () => {
 })
 
 test("submit button is enabled if list is active", async () => {
-  const wrapper = shallow(<ToDoit/>);
+  const wrapper = shallow(<Home />);
 
   await act(async () => {
-    render(<ToDoit />);
+    render(<Home />);
   });
 
   wrapper.setState({ activeList: "some list" })
@@ -83,11 +83,11 @@ test("submit button is enabled if list is active", async () => {
 })
 
 test("calls the putActiveList integration test", async () => {
-  const spy = jest.spyOn(ToDoit.prototype, "putActiveList");
-  const wrapper = shallow(<ToDoit/>);
+  const spy = jest.spyOn(Home.prototype, "putActiveList");
+  const wrapper = shallow(<Home/>);
 
   await act(async () => {
-    render(<ToDoit />);
+    render(<Home />);
   });
 
   expect(wrapper.find('button').prop('disabled')).toEqual(true);
@@ -98,5 +98,5 @@ test("calls the putActiveList integration test", async () => {
 
   wrapper.find("button").simulate("click");
 
-  expect(ToDoit.prototype.putActiveList).toHaveBeenCalledTimes(1);
+  expect(Home.prototype.putActiveList).toHaveBeenCalledTimes(1);
 })

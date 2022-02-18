@@ -4,7 +4,7 @@ import '../../ToDoApp.css';
 import './style.css';
 import React, { Component } from 'react';
 
-class ToDoit extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
 
@@ -111,4 +111,4 @@ class ToDoit extends Component {
   }
 }
 
-export default ToDoit;
+export default Home;
