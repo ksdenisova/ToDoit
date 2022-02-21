@@ -1,5 +1,5 @@
 import React from 'react';
-import ActionForm from './ActionForm';
+import ActionForm from '.';
 import { render, screen, fireEvent, userEvent } from "@testing-library/react"
 import { shallow, mount } from "enzyme";
 

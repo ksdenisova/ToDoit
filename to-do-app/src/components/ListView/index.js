@@ -1,5 +1,5 @@
-import ListItem from './ListItem';
-import ActionForm from './ActionForm';
+import ListItem from '../ListItem';
+import ActionForm from '../ActionForm';
 import React, { Component } from 'react';
 
 class ListView extends Component {
