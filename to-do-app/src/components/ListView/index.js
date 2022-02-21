@@ -26,8 +26,8 @@ class ListView extends Component {
         </ListItem>)
       
       view = <>
-        <ActionForm activeList = {this.props.activeList} saveActiveList = {this.props.saveActiveList}/>
         {items}
+        <ActionForm activeList = {this.props.activeList} saveActiveList = {this.props.saveActiveList}/>
       </>
     }
 
