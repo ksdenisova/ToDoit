@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class ActionForm extends Component {
+class NewItem extends Component {
   constructor(props) {
     super(props);
 
@@ -47,4 +47,4 @@ class ActionForm extends Component {
   }
 }
 
-export default ActionForm;
+export default NewItem;

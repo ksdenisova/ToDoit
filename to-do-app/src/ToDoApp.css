@@ -41,14 +41,6 @@
 
 }
 
-.List-Item-Button{
-  width: 7%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .List-Item-Container{
   height: 10%;
   display: flex;
