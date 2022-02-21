@@ -58,14 +58,6 @@
   justify-content: space-evenly;
 }
 
-.List-View{
-  color: black;
-  height: 100%;
-  width: 100%;
-  overflow: scroll;
-  align-items: center;
-}
-
 .Logo-Container{
   height: 100%;
   display: flex;

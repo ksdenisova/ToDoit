@@ -1,6 +1,7 @@
 import ListItem from '../ListItem';
 import ActionForm from '../ActionForm';
 import React, { Component } from 'react';
+import './style.css';
 
 class ListView extends Component {
   constructor(props) {
@@ -9,10 +10,13 @@ class ListView extends Component {
 
   render() {
     let view;
+    let title;
 
     if (this.props.activeList === undefined) {
       view = <div className='Logo-Container'> <img src="/8L.png" className="App-logo" alt="logo" /></div>;
     } else {
+        title = this.props.activeList.title;
+
         const items = this.props.activeList.items.map(
         entry => <ListItem 
           key={entry.toDoItem} 
@@ -28,8 +32,11 @@ class ListView extends Component {
     }
 
     return (
-        <div className="List-View">
-          {view}
+        <div>
+          <h3 className="active-list-header">{title}</h3>
+          <span className="items">
+            {view}
+          </span>
         </div>
     );
   }
