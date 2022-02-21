@@ -1,4 +1,4 @@
-import ListView from '../ListView/ListView';
+import ListView from '../ListView';
 import ListTitles from '../ListTitles';
 import '../../ToDoApp.css';
 import './style.css';
@@ -100,7 +100,7 @@ class Home extends Component {
             getAllLists = {this.getAllListsHandler}
           />
         </div>
-        <div className='To-Do-View item-box'>
+        <div className='item-box'>
           <ListView
             activeList = {this.state.activeList}
             saveActiveList = {this.saveActiveListHander}

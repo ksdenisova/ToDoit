@@ -1,5 +1,5 @@
 import React from 'react';
-import ListView from './ListView';
+import ListView from '.';
 import { render, screen } from "@testing-library/react"
 
 test("renders logo if active list is empty", () => {

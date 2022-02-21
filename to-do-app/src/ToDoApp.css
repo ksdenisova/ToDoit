@@ -21,10 +21,6 @@
   height: 100%;
 }
 
-.Active-List{
-  background-color: cadetblue;
-}
-
 .App {
   text-align: center;
 }
@@ -42,17 +38,6 @@
 
 @media (prefers-reduced-motion: no-preference) {
 
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .List-Item-Button{
@@ -102,59 +87,12 @@
   font-size: calc(15px + 2vmin);
 }
 
-.Title-Bar{
-  min-width: 350px;
-  width: 65vw;
-  max-width: 900px;
-  height: 5.5vh;
-  border-radius: 16px;
-  display: flex;
-  white-space: nowrap;
-  flex-wrap: nowrap;
-  overflow: scroll;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.Title-Input{
-  font-size: calc(10px + 2vmin);
-  color: #61dafb;
-  width: calc(180px + 2vmin);
-  box-sizing: border-box;
-  border: transparent;
-  outline: none;
-  background: transparent;
-  text-align: center;
-}
-
-.Title-Tab{
-  background-color: #4c535a;
-  color: #61dafb;
-  height: 100%;
-  border-radius: 10px;
-  margin-right: 10px;
-  padding-right: 9px;
-}
-
 .To-Do-Space{
   width: 80%;
   overflow: scroll;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.To-Do-View {
-  background-color: azure;
-  min-width: 350px;
-  max-width: 900px;
-  width: 65vw;
-  height: 58vh;
-  border-radius: 12px;
-  opacity: 0.91;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 ul:hover{
