@@ -1,12 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap');
+
 .new-list {
-  width: 199px;
+  margin-top: 76px;
+  width: 342px;
   height: 33px;
-  left: 197px;
-  top: 603px;
+  font-family: 'Roboto', sans-serif;
   font-style: italic;
   font-weight: 100;
   font-size: 28px;
   line-height: 33px;
   letter-spacing: 0.01em;
-  color: black;
+  color: #FFFFFF;
+  border: none;
+  border-bottom: 3px solid #FFFFFF;
+  background: none;
+}
+
+.add-icon {
+  padding-right: 15px;
+  transform: scale(1.2);
+  stroke: #FFFFFF;
+  stroke-width: 1;
+}
+
+::placeholder {
+  color: #FFFFFF;
+  font-style: italic;
+  font-size: 28px;
+  letter-spacing: 0.01em;
+}
+
+input:focus {
+  outline-width: 0;
 }

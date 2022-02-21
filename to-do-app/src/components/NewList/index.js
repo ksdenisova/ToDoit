@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './style.css';
+import AddIcon from '@mui/icons-material/Add';
 
 class NewList extends Component {
   constructor(props) {
@@ -26,16 +27,15 @@ class NewList extends Component {
   
   render() {
     return (
-        <div className="list-titles">
-            <img className="List-Image" src="./add-list.png" onClick={this.imageClickHandler}/>
-            <span> 
-              <input 
-                className="new-list" type="text" 
-                value= {this.state.inputValue} 
-                onChange={event => this.setState({inputValue: event.target.value})}
-                placeholder='Enter New List'>     
-              </input>
-            </span>
+        <div>
+            <AddIcon className="add-icon" onClick={this.imageClickHandler} data-testid="addIcon"/>
+            <input 
+              className="new-list"
+              type="text" 
+              value= {this.state.inputValue} 
+              onChange={event => this.setState({inputValue: event.target.value})}
+              placeholder="Enter your new list">     
+            </input>
         </div>
     );
   }
