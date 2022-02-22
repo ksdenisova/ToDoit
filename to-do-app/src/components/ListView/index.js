@@ -33,10 +33,12 @@ class ListView extends Component {
 
     return (
         <div>
-          <h3 className="active-list-header">{title}</h3>
-          <span className="items">
+          <div>
+            <h3 className="active-list-header">{title}</h3>
+          </div>
+          <div className="items">
             {view}
-          </span>
+          </div>
         </div>
     );
   }

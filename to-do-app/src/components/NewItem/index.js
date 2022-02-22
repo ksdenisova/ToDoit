@@ -29,7 +29,7 @@ class NewItem extends Component {
 
   render() {
     return (
-      <div className="new-item">
+      <div>
         <AddIcon className="add-item-icon" onClick={this.addItemHandler} data-testid="addIcon"/>
           <input 
             className="new-item-input" type="text" 

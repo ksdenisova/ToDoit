@@ -1,11 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-.new-item {
-  margin-top: 15px;
-}
-
 .add-item-icon {
-  padding-right: 15px;
+  padding-right: 20px;
   margin-top: 15px;
   margin-left: 42px;
   transform: scale(1.2);
@@ -13,6 +9,7 @@
 }
 
 .new-item-input {
+  padding-bottom: 8px;
   color: #000000;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;

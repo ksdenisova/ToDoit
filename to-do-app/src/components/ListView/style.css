@@ -15,8 +15,7 @@
 }
 
 .items {
-  position: absolute;
-  margin-top: 46px;
+  padding-top: 33px;
   width: 746px;
   height: 339px;
   top: 399px;

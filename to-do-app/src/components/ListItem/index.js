@@ -25,11 +25,12 @@ class ListItem extends Component {
   
   render() {
     return (
-        <div className="item-list">
+        <div className="item">
           <Checkbox 
             defaultChecked={this.props.itemProperties.completed}
-            onChange={this.handleClick}/>
-          <div className="item">{this.props.itemProperties.toDoItem}</div>
+            onChange={this.handleClick}
+            />
+          <div className="item-text">{this.props.itemProperties.toDoItem}</div>
             <img src="/remove-item.png"
             className="Action-Button"
             onClick={this.handleDelete}></img>
