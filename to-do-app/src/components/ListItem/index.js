@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './style.css';
 import { Checkbox } from '@mui/material';
+import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
+import CheckBoxOutlineBlankOutlinedIcon from '@mui/icons-material/CheckBoxOutlineBlankOutlined';
 
 class ListItem extends Component {
   constructor(props) {
@@ -26,9 +28,13 @@ class ListItem extends Component {
   render() {
     return (
         <div className="item">
-          <Checkbox 
+          <Checkbox
             defaultChecked={this.props.itemProperties.completed}
             onChange={this.handleClick}
+            icon={<CheckBoxOutlineBlankOutlinedIcon />}
+            checkedIcon={<CheckBoxOutlinedIcon />}
+            color="default"
+            disableRipple
             />
           <div className="item-text">{this.props.itemProperties.toDoItem}</div>
             <img src="/remove-item.png"
