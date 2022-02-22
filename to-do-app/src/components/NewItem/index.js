@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import AddIcon from '@mui/icons-material/Add';
+import './style.css';
 
 class NewItem extends Component {
   constructor(props) {
@@ -8,10 +10,10 @@ class NewItem extends Component {
       actionFormValue: ""
     }
 
-    this.handlePlus = this.cilckAction.bind(this);
+    this.addItemHandler = this.addItem.bind(this);
   }
   
-  cilckAction() {
+  addItem() {
     if (this.state.actionFormValue == "") {
       return;
     }
@@ -27,22 +29,15 @@ class NewItem extends Component {
 
   render() {
     return (
-        <div className="List-Item-Container">
-            <img src="/add-item.png" 
-              className="Action-Button" 
-              onClick={this.handlePlus}>
-            </img>
-            <div className = "To-Do-Space">
-              <form className='Action-Form'>
-                <input 
-                  className="Action-Input" type="text" 
+      <div className="new-item">
+        <AddIcon className="add-item-icon" onClick={this.addItemHandler} data-testid="addIcon"/>
+          <input 
+            className="new-item-input" type="text" 
                   value={this.state.actionFormValue} placeholder='Enter New To-Do Item'
-                  onChange = {event => this.setState({actionFormValue: event.target.value})}>
-                </input>
-              </form>
-            </div>
-            <div className = "List-Item-Button"/>
-        </div>
+            onChange = {event => this.setState({actionFormValue: event.target.value})}>
+          </input>
+        <div className = "List-Item-Button"/>
+      </div>
     );
   }
 }
