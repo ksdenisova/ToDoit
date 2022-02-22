@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import ToDoit from './components/ToDoit/index.js';
+import Home from './components/Home/index.js';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ToDoit />
+    <Home />
   </React.StrictMode>,
   document.getElementById('root')
 );

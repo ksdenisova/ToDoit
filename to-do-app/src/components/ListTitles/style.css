@@ -1,0 +1,39 @@
+.list-titles {
+  position: absolute;
+  height: 33px;
+  left: 165px;
+  top: 353px;
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 33px;
+  letter-spacing: 0.01em;
+  color: #FFFFFF;
+}
+
+ul {
+  margin-top: 0;
+  margin-bottom: 14px;
+}
+
+.list-titles > ul {
+  list-style-type: none;
+}
+
+ul {
+  padding-inline-start: 0;
+}
+
+li img {
+  padding-right: 15px;
+}
+
+.icon {
+  padding-right: 15px;
+  transform: scale(0.8);
+  stroke: #FFFFFF;
+  stroke-width: 2;
+}
+
+li:active {
+  font-weight: 800;
+}

@@ -1,10 +1,10 @@
 import ListView from '../ListView/ListView';
-import NewList from '../ListView/NewList';
+import ListTitles from '../ListTitles';
 import '../../ToDoApp.css';
 import './style.css';
 import React, { Component } from 'react';
 
-class ToDoit extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
 
@@ -25,10 +25,6 @@ class ToDoit extends Component {
       return list.title === title});
 
     return activeList[0];
-  }
-
-  getTitles() {
-    return this.state.toDoLists.map(entry => entry.title);
   }
 
   changeActiveList(list) {
@@ -83,7 +79,6 @@ class ToDoit extends Component {
   }
 
   render() {
-    let titles = this.getTitles();
     let isDisabled;
    
     if (!this.state.activeList) {
@@ -91,30 +86,19 @@ class ToDoit extends Component {
     } else {
       isDisabled = false;
     }
-    
-    let lists = this.state.isLoaded ? titles.map(
-      entry => 
-        <div key={entry} className="Title-Tab">
-          <img className= "List-Image" src="./remove-list.png" onClick={this.deleteListHandler}/>
-          <ul onClick={() => 
-            this.changeActiveList(this.filterLists(entry))}>{entry}</ul>
-        </div>
-      ): <ul></ul>;
 
     return (
       <div className="main">
         <h1 className="header-box">to doit</h1>
         <div className="list-box">
-          <h2 className="my-lists-header">my lists</h2>
-          <a
-            className="App-link"
-          >
-            <NewList 
-              createList = {this.createNewListHandler}
-              getAllLists = {this.getAllListsHandler}
-            />
-            {lists}
-          </a>
+          <ListTitles 
+            isLoaded = {this.state.isLoaded}
+            toDoLists = {this.state.toDoLists}
+            saveActiveList = {this.saveActiveListHander}
+            deleteActiveList = {this.deleteListHandler}
+            createList = {this.createNewListHandler}
+            getAllLists = {this.getAllListsHandler}
+          />
         </div>
         <div className='To-Do-View item-box'>
           <ListView
@@ -127,4 +111,4 @@ class ToDoit extends Component {
   }
 }
 
-export default ToDoit;
+export default Home;

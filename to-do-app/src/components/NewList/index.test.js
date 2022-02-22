@@ -1,14 +1,15 @@
 import React from 'react';
-import NewList from './NewList';
-import { render, screen, fireEvent, userEvent } from "@testing-library/react"
-import { shallow, mount } from "enzyme";
+import NewList from '.';
+import { render, screen } from "@testing-library/react"
+import { shallow } from "enzyme";
+import AddIcon from '@mui/icons-material/Add';
 
-test("renders add list button image", () => {
+test("renders add list button icon", () => {
   render(<NewList />);
 
-  const image = screen.getByRole("img");
+  const icon = screen.getByTestId("addIcon");
 
-  expect(image).toHaveAttribute("src", "./add-list.png");
+  expect(icon).toBeInTheDocument();
 });
 
 test("renders form for a new list", () => {
@@ -18,7 +19,7 @@ test("renders form for a new list", () => {
 
   expect(form).toHaveLength(1);
 
-  const textbox = screen.getByPlaceholderText("Enter New List");
+  const textbox = screen.getByPlaceholderText("Enter your new list");
 
   expect(textbox).toBeInTheDocument();
 });
@@ -41,7 +42,7 @@ test("adds a new item to the active list", () => {
 
   const newList = {"title": testTitle, "user": "Default User", "items": []};
 
-  wrapper.find("img").simulate("click");
+  wrapper.find(AddIcon).simulate("click");
 
   expect(wrapper.instance().props.createList).toHaveBeenCalledTimes(1);
   expect(wrapper.instance().props.createList).toHaveBeenCalledWith(newList);

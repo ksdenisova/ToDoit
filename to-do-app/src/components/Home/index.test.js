@@ -1,11 +1,11 @@
-import ToDoit from '.';
+import Home from '.';
 import React from 'react';
 import { shallow } from "enzyme";
 import { act } from "react-dom/test-utils";
 import { render, screen } from "@testing-library/react"
 
 beforeEach(() => {
-  const fakeJson = 
+  const testLists = 
    [
       { "id": 1, "title": "First Test Title", "items": [
         {"toDoItem": "First Item", "completed": false},
@@ -19,7 +19,7 @@ beforeEach(() => {
 
     jest.spyOn(global, "fetch").mockImplementation(() =>
     Promise.resolve({
-      json: () => Promise.resolve(fakeJson)
+      json: () => Promise.resolve(testLists)
     })
   );
 });
@@ -28,15 +28,9 @@ afterEach(() => {
   jest.clearAllMocks();
 }); 
 
-test("does not renders list tab if lists has not loaded", () => {
-  render(<ToDoit />);
-
-  expect(screen.getByRole('list')).toHaveTextContent("");
-});
-
 test("renders ToDo lists titles in reverse order", async () => {
   await act(async () => {
-    render(<ToDoit />);
+    render(<Home />);
   });
 
   const lists = screen.getAllByRole('list');
@@ -49,7 +43,7 @@ test("renders ToDo lists titles in reverse order", async () => {
 });
 
 test("changeActiveList changes activeList", async () => {
-  const wrapper = shallow(<ToDoit/>);
+  const wrapper = shallow(<Home />);
 
   const testList = { "id": 1, "title": "Dummy Title", "items": 
         [ {"toDoItem": "First Item", "completed": false} ] }
@@ -59,20 +53,8 @@ test("changeActiveList changes activeList", async () => {
   expect(wrapper.state().activeList.title).toBe("Dummy Title");
 })
 
-test("changes active list on click", async () => {
-  const wrapper = shallow(<ToDoit/>);
-
-  await act(async () => {
-    render(<ToDoit />);
-  });
-
-  wrapper.find('ul').first().simulate('click');
- 
-  expect(wrapper.state().activeList.title).toBe("Second Test Title");
-})
-
 test("renders submit button", () => {
-  render(<ToDoit />);
+  render(<Home />);
 
   const button = screen.getByRole("button");
 
@@ -81,7 +63,7 @@ test("renders submit button", () => {
 })
 
 test("submit button is disabled if there is no active lists", () => {
-  render(<ToDoit />);
+  render(<Home />);
 
   const button = screen.getByRole("button");
 
@@ -89,58 +71,32 @@ test("submit button is disabled if there is no active lists", () => {
 })
 
 test("submit button is enabled if list is active", async () => {
-  const wrapper = shallow(<ToDoit/>);
+  const wrapper = shallow(<Home />);
 
   await act(async () => {
-    render(<ToDoit />);
+    render(<Home />);
   });
 
-  wrapper.find('ul').first().simulate('click');
+  wrapper.setState({ activeList: "some list" })
 
   expect(wrapper.find('button').prop('disabled')).toEqual(false);
 })
 
 test("calls the putActiveList integration test", async () => {
-  const spy = jest.spyOn(ToDoit.prototype, "putActiveList");
-  const wrapper = shallow(<ToDoit/>);
+  const spy = jest.spyOn(Home.prototype, "putActiveList");
+  const wrapper = shallow(<Home/>);
 
   await act(async () => {
-    render(<ToDoit />);
+    render(<Home />);
   });
 
   expect(wrapper.find('button').prop('disabled')).toEqual(true);
 
-  wrapper.find('ul').first().simulate('click');
+  wrapper.setState({ activeList: "some list" })
 
   expect(wrapper.find('button').prop('disabled')).toEqual(false);
 
   wrapper.find("button").simulate("click");
 
-  expect(ToDoit.prototype.putActiveList).toHaveBeenCalledTimes(1);
-})
-
-test("renders remove buttons for lists", async () => {
-  const wrapper = shallow(<ToDoit/>);
-
-  await act(async () => {
-    render(<ToDoit />);
-  });
-
-  const button = wrapper.find('img').first();
-  expect(button.prop('src')).toEqual("./remove-list.png");
- })
-
-test("removes active list on click integration test", async () => {
-  const spy = jest.spyOn(ToDoit.prototype, "deleteActiveList");
-  const wrapper = shallow(<ToDoit/>);
-
-  await act(async () => {
-    render(<ToDoit />);
-  });
-
-  const button = wrapper.find('img').first();
-
-  button.simulate('click');
-
-  expect(ToDoit.prototype.deleteActiveList).toHaveBeenCalledTimes(1);
+  expect(Home.prototype.putActiveList).toHaveBeenCalledTimes(1);
 })
