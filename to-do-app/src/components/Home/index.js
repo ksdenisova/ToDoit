@@ -100,7 +100,7 @@ class Home extends Component {
           />
         </div>
         <button
-          className="button-box"
+          className="button-box delete-button"
           disabled={isDisabled}
           data-testid="deleteButton">
             Delete List
