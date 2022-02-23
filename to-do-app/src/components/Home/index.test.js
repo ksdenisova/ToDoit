@@ -56,7 +56,7 @@ test("changeActiveList changes activeList", async () => {
 test("renders submit button", () => {
   render(<Home />);
 
-  const button = screen.getByRole("button");
+  const button = screen.getByTestId("submitButton");
 
   expect(button).toBeInTheDocument();
   expect(button).toHaveTextContent("Submit");
@@ -65,7 +65,7 @@ test("renders submit button", () => {
 test("submit button is disabled if there is no active lists", () => {
   render(<Home />);
 
-  const button = screen.getByRole("button");
+  const button = screen.getByTestId("submitButton");
 
   expect(button).toBeDisabled();
 })
@@ -78,11 +78,12 @@ test("submit button is enabled if list is active", async () => {
   });
 
   wrapper.setState({ activeList: "some list" })
+  const button = wrapper.find({ "data-testid": "submitButton" });
 
-  expect(wrapper.find('button').prop('disabled')).toEqual(false);
+  expect(button.prop('disabled')).toEqual(false);
 })
 
-test("calls the putActiveList integration test", async () => {
+test("calls the putActiveList when press submit button", async () => {
   const spy = jest.spyOn(Home.prototype, "putActiveList");
   const wrapper = shallow(<Home/>);
 
@@ -90,13 +91,43 @@ test("calls the putActiveList integration test", async () => {
     render(<Home />);
   });
 
-  expect(wrapper.find('button').prop('disabled')).toEqual(true);
-
   wrapper.setState({ activeList: "some list" })
 
-  expect(wrapper.find('button').prop('disabled')).toEqual(false);
+  const button = wrapper.find({ "data-testid": "submitButton" });
 
-  wrapper.find("button").simulate("click");
+  expect(button.prop('disabled')).toEqual(false);
+
+  button.simulate("click");
 
   expect(Home.prototype.putActiveList).toHaveBeenCalledTimes(1);
+})
+
+test("renders delete list button", () => {
+  render(<Home />);
+
+  const deleteButton = screen.getByTestId("deleteButton");
+
+  expect(deleteButton).toBeInTheDocument();
+  expect(deleteButton).toHaveTextContent("Delete List");
+})
+
+test("delete button is disabled if there is no active lists", () => {
+  render(<Home />);
+
+  const deleteButton = screen.getByTestId("deleteButton");
+
+  expect(deleteButton).toBeDisabled();
+})
+
+test("delete button is enabled if list is active", async () => {
+  const wrapper = shallow(<Home />);
+
+  await act(async () => {
+    render(<Home />);
+  });
+
+  wrapper.setState({ activeList: "some list" })
+  const button = wrapper.find({ "data-testid": "deleteButton" });
+
+  expect(button.prop('disabled')).toEqual(false);
 })

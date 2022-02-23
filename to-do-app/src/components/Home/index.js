@@ -19,13 +19,6 @@ class Home extends Component {
     this.getAllListsHandler = this.getAllLists.bind(this);
     this.deleteListHandler = this.deleteActiveList.bind(this);
   }
-  
-  filterLists(title) {
-    const activeList = this.state.toDoLists.filter((list) => {
-      return list.title === title});
-
-    return activeList[0];
-  }
 
   changeActiveList(list) {
     this.setState({activeList: list});
@@ -106,7 +99,19 @@ class Home extends Component {
             saveActiveList = {this.saveActiveListHander}
           />
         </div>
-        <button className='Submit-Button button-box' disabled={isDisabled} onClick={this.submitHandler}>Submit</button>
+        <button
+          className="button-box"
+          disabled={isDisabled}
+          data-testid="deleteButton">
+            Delete List
+        </button>
+        <button
+          className='Submit-Button'
+          disabled={isDisabled}
+          data-testid="submitButton"
+          onClick={this.submitHandler}>
+            Submit
+        </button>
       </div>);
   }
 }
