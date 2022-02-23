@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import './style.css';
+import { Checkbox } from '@mui/material';
+import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
+import CheckBoxOutlineBlankOutlinedIcon from '@mui/icons-material/CheckBoxOutlineBlankOutlined';
 
 class ListItem extends Component {
   constructor(props) {
@@ -23,18 +27,19 @@ class ListItem extends Component {
   
   render() {
     return (
-        <div className="List-Item-Container">
-            <img src="/remove-item.png" 
+        <div className="item">
+          <Checkbox
+            defaultChecked={this.props.itemProperties.completed}
+            onChange={this.handleClick}
+            icon={<CheckBoxOutlineBlankOutlinedIcon />}
+            checkedIcon={<CheckBoxOutlinedIcon />}
+            color="default"
+            disableRipple
+            />
+          <div className="item-text">{this.props.itemProperties.toDoItem}</div>
+            <img src="/remove-item.png"
             className="Action-Button"
             onClick={this.handleDelete}></img>
-            <div className = "To-Do-Space">{this.props.itemProperties.toDoItem}</div>
-            <div className = "List-Item-Button">
-                <input 
-                    type="checkbox" className='List-Checkbox' 
-                    defaultChecked={this.props.itemProperties.completed}
-                    onChange={this.handleClick}>
-                </input>
-            </div>
         </div>
     );
   }

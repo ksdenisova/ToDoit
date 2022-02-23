@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,100&display=swap');
+
+.active-list-header {
+  margin-top: 46px;
+  margin-bottom: 46px;
+  margin-left: 38px;
+  width: 183px;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: 0.01em;
+  color: #3F51B5;
+}
+
+.items {
+  padding-top: 33px;
+  width: 746px;
+  height: 339px;
+  top: 399px;
+  background: #FFFFFF;
+}

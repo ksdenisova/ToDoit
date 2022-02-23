@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+.add-item-icon {
+  padding-right: 20px;
+  margin-top: 15px;
+  margin-left: 42px;
+  transform: scale(1.2);
+  stroke: #000000;
+}
+
+.new-item-input {
+  padding-bottom: 8px;
+  color: #000000;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: 0.01em;
+  width: 342px;
+  border: none;
+  border-bottom: 3px solid #000000;
+}
+
+.new-item-input::placeholder {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: 0.01em;
+  color: #000000;
+}

@@ -1,18 +1,19 @@
 import React from 'react';
-import ActionForm from './ActionForm';
+import NewItem from '.';
 import { render, screen, fireEvent, userEvent } from "@testing-library/react"
 import { shallow, mount } from "enzyme";
+import AddIcon from '@mui/icons-material/Add';
 
-test("renders add button image", () => {
-  render(<ActionForm />);
+test("renders add button icon", () => {
+  render(<NewItem />);
 
-  const image = screen.getByRole("img");
+  const icon = screen.getByTestId("addIcon");
 
-  expect(image).toHaveAttribute("src", "/add-item.png");
+  expect(icon).toBeInTheDocument();
 });
 
 test("renders form for a new item", () => {
-  render(<ActionForm />);
+  render(<NewItem />);
 
   const form = screen.getAllByRole("textbox");
 
@@ -27,9 +28,9 @@ test("adds a new item to the active list", () => {
   const testList = { "id": 1, "title": "Dummy Title", "items": 
                       [ {"toDoItem": "First Item", "completed": false} ] }
 
-  const wrapper = shallow(<ActionForm activeList={testList} saveActiveList={() => null}/>);
+  const wrapper = shallow(<NewItem activeList={testList} saveActiveList={() => null}/>);
   
-  render(<ActionForm activeList={testList} saveActiveList={() => null}/>);
+  render(<NewItem activeList={testList} saveActiveList={() => null}/>);
 
   const inputForm = wrapper.find("input");
 
@@ -37,7 +38,7 @@ test("adds a new item to the active list", () => {
 
   expect(wrapper.find("input").get(0).props.value).toEqual("New Item");
 
-  wrapper.find("img").simulate("click");
+  wrapper.find(AddIcon).simulate("click");
 
   const expected = {"id": 1, "items": [{"completed": false, "toDoItem": "First Item"}, {"completed": false, "toDoItem": "New Item"}], "title": "Dummy Title"}
   

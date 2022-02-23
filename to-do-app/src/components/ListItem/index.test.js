@@ -1,5 +1,5 @@
 import React from 'react';
-import ListItem from './ListItem';
+import ListItem from '.';
 import { render, screen, fireEvent } from "@testing-library/react"
 import { shallow } from "enzyme";
 
