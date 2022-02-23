@@ -102,7 +102,8 @@ class Home extends Component {
         <button
           className="button-box delete-button"
           disabled={isDisabled}
-          data-testid="deleteButton">
+          data-testid="deleteButton"
+          onClick={this.deleteListHandler}>
             Delete List
         </button>
         <button

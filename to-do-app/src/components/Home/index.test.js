@@ -131,3 +131,20 @@ test("delete button is enabled if list is active", async () => {
 
   expect(button.prop('disabled')).toEqual(false);
 })
+
+test("removes active list when 'Delete List' button has been clicked", async () => {
+  const spy = jest.spyOn(Home.prototype, "deleteActiveList");
+  const wrapper = shallow(<Home/>);
+
+  await act(async () => {
+    render(<Home />);
+  });
+
+  wrapper.setState({ activeList: "some list" })
+
+  const button = wrapper.find({ "data-testid": "deleteButton" });
+
+  button.simulate('click');
+
+  expect(Home.prototype.deleteActiveList).toHaveBeenCalledTimes(1);
+})

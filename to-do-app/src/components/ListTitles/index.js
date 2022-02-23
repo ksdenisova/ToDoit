@@ -27,8 +27,7 @@ class ListTitles extends Component {
           <ul key={entry}>
             <li onClick={() => this.props.saveActiveList(this.getActiveList(entry))}>
               <CircleOutlinedIcon className="icon"/>
-              <img className= "List-Image" src="./remove-list.png" onClick={this.props.deleteActiveList}/>
-              <span>{entry}</span>
+              {entry}
             </li>
           </ul>
         );
