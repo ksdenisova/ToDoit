@@ -3,6 +3,8 @@ import './style.css';
 import { Checkbox } from '@mui/material';
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 import CheckBoxOutlineBlankOutlinedIcon from '@mui/icons-material/CheckBoxOutlineBlankOutlined';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 class ListItem extends Component {
   constructor(props) {
@@ -37,9 +39,11 @@ class ListItem extends Component {
             disableRipple
             />
           <div className="item-text">{this.props.itemProperties.toDoItem}</div>
-            <img src="/remove-item.png"
-            className="Action-Button"
-            onClick={this.handleDelete}></img>
+            <DeleteIcon 
+              className="delete-icon"
+              data-testid="deleteIcon"
+              onClick={this.handleDelete}
+            />
         </div>
     );
   }

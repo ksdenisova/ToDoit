@@ -2,6 +2,7 @@ import React from 'react';
 import ListItem from '.';
 import { render, screen, fireEvent } from "@testing-library/react"
 import { shallow } from "enzyme";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 test("renders items from to-do list", () => {
   const testItem = {"toDoItem": "First Item", "completed": false}
@@ -11,14 +12,14 @@ test("renders items from to-do list", () => {
   expect(screen.getByText(/First Item/i)).toBeInTheDocument();
 });
 
-test("renders remove button image", () => {
+test("renders delete button icon", () => {
   const testItem = {"toDoItem": "First Item", "completed": false}
 
   render(<ListItem itemProperties = {testItem}/>);
 
-  const image = screen.getByRole("img");
+  const icon = screen.getByTestId("deleteIcon");
 
-  expect(image).toHaveAttribute("src", "/remove-item.png");
+  expect(icon).toBeInTheDocument();
 });
 
 test("checkbox is rendered once", () => {
@@ -78,7 +79,7 @@ test("removes an item from active list", () => {
   
   render(<ListItem activeList={testList} saveActiveList={(list) => list} itemProperties={itemToDelete}/>);
 
-  wrapper.find("img").simulate("click");
+  wrapper.find(DeleteIcon).simulate("click");
 
   const expected = {"id": 1, "title": "Dummy Title", "items": [{"completed": false, "toDoItem": "First Item"}]}
   
