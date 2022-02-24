@@ -25,7 +25,9 @@ class ListTitles extends Component {
       lists = titles.map(
         entry => 
           <ul key={entry}>
-            <li onClick={() => this.props.saveActiveList(this.getActiveList(entry))}>
+            <li
+              className={this.props.activeList && entry === this.props.activeList.title ? "active-list" : "unactive-list"} 
+              onClick={() => this.props.saveActiveList(this.getActiveList(entry))}>
               <CircleOutlinedIcon className="icon"/>
               <img className= "List-Image" src="./remove-list.png" onClick={this.props.deleteActiveList}/>
               <span>{entry}</span>

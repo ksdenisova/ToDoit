@@ -98,6 +98,7 @@ class Home extends Component {
             deleteActiveList = {this.deleteListHandler}
             createList = {this.createNewListHandler}
             getAllLists = {this.getAllListsHandler}
+            activeList={this.state.activeList}
           />
         </div>
         <div className='item-box'>
