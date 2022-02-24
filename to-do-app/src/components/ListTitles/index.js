@@ -39,8 +39,8 @@ class ListTitles extends Component {
           <div className="list-titles">
             {lists}
             <NewList 
-              createList = {this.props.createList}
-              getAllLists = {this.props.getAllLists}
+              createList={this.props.createList}
+              getAllLists={this.props.getAllLists}
             />
           </div>
       </div>);

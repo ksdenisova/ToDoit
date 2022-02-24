@@ -85,18 +85,18 @@ class Home extends Component {
         <h1 className="header-box">to doit</h1>
         <div className="list-box">
           <ListTitles 
-            isLoaded = {this.state.isLoaded}
-            toDoLists = {this.state.toDoLists}
-            saveActiveList = {this.saveActiveListHander}
-            deleteActiveList = {this.deleteListHandler}
-            createList = {this.createNewListHandler}
-            getAllLists = {this.getAllListsHandler}
+            isLoaded={this.state.isLoaded}
+            toDoLists={this.state.toDoLists}
+            saveActiveList={this.saveActiveListHander}
+            deleteActiveList={this.deleteListHandler}
+            createList={this.createNewListHandler}
+            getAllLists={this.getAllListsHandler}
           />
         </div>
-        <div className='item-box'>
+        <div className="item-box">
           <ListView
-            activeList = {this.state.activeList}
-            saveActiveList = {this.saveActiveListHander}
+            activeList={this.state.activeList}
+            saveActiveList={this.saveActiveListHander}
           />
         </div>
         <button

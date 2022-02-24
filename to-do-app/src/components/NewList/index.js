@@ -27,16 +27,20 @@ class NewList extends Component {
   
   render() {
     return (
-        <div>
-            <AddIcon className="add-icon" onClick={this.imageClickHandler} data-testid="addIcon"/>
-            <input 
-              className="new-list"
-              type="text" 
-              value= {this.state.inputValue} 
-              onChange={event => this.setState({inputValue: event.target.value})}
-              placeholder="Enter your new list">     
-            </input>
-        </div>
+      <div>
+        <AddIcon
+          className="add-icon"
+          onClick={this.imageClickHandler}
+          data-testid="addIcon"
+        />
+        <input 
+          className="new-list"
+          type="text" 
+          value={this.state.inputValue} 
+          onChange={event => this.setState({inputValue: event.target.value})}
+          placeholder="Enter your new list">     
+        </input>
+      </div>
     );
   }
 }

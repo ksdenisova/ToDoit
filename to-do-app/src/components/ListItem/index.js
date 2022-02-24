@@ -37,9 +37,10 @@ class ListItem extends Component {
             disableRipple
             />
           <div className="item-text">{this.props.itemProperties.toDoItem}</div>
-            <img src="/remove-item.png"
-            className="Action-Button"
-            onClick={this.handleDelete}/>
+            <img 
+              src="/remove-item.png"
+              className="Action-Button"
+              onClick={this.handleDelete}/>
         </div>
     );
   }

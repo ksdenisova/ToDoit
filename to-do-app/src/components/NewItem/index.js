@@ -30,12 +30,17 @@ class NewItem extends Component {
   render() {
     return (
       <div>
-        <AddIcon className="add-item-icon" onClick={this.addItemHandler} data-testid="addIcon"/>
-          <input 
-            className="new-item-input" type="text" 
-                  value={this.state.actionFormValue} placeholder='Enter New To-Do Item'
-            onChange = {event => this.setState({actionFormValue: event.target.value})}>
-          </input>
+        <AddIcon 
+          className="add-item-icon"
+          onClick={this.addItemHandler}
+          data-testid="addIcon"
+        />
+        <input 
+          className="new-item-input" type="text" 
+          value={this.state.actionFormValue}
+          placeholder="Enter New To-Do Item"
+          onChange={event => this.setState({actionFormValue: event.target.value})}>
+        </input>
       </div>
     );
   }
