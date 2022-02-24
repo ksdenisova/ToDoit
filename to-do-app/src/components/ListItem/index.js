@@ -39,11 +39,17 @@ class ListItem extends Component {
             disableRipple
             />
           <div className="item-text">{this.props.itemProperties.toDoItem}</div>
+          <div className="icons">
+            <EditIcon
+              className="edit-icon"
+              data-testid="editIcon"
+            />
             <DeleteIcon 
               className="delete-icon"
               data-testid="deleteIcon"
               onClick={this.handleDelete}
             />
+          </div>
         </div>
     );
   }

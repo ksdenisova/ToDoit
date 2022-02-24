@@ -85,3 +85,14 @@ test("removes an item from active list", () => {
   
   expect(wrapper.instance().props.activeList).toEqual(expected);
 });
+
+
+test("renders edit button icon", () => {
+  const testItem = {"toDoItem": "First Item", "completed": false}
+
+  render(<ListItem itemProperties = {testItem}/>);
+
+  const icon = screen.getByTestId("editIcon");
+
+  expect(icon).toBeInTheDocument();
+});

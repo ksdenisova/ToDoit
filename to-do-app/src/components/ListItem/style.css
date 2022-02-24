@@ -21,6 +21,19 @@
   border-radius: 10px 10px 10px 10px;
 }
 
+.icons {
+  display: none;
+}
+
+.item:hover .icons {
+  display: flex;
+}
+
+.edit-icon {
+  margin-right: 19px;
+}
+
 .delete-icon {
+  margin-right: 12px;
   color: #E47B7B;
 }
