@@ -38,7 +38,12 @@ class ListItem extends Component {
             color="default"
             disableRipple
             />
-          <div className="item-text">{this.props.itemProperties.toDoItem}</div>
+          <input
+            className="item-text"
+            type="text"
+            value={this.props.itemProperties.toDoItem}
+            disabled={true}>
+          </input>
           <div className="icons">
             <EditIcon
               className="edit-icon"

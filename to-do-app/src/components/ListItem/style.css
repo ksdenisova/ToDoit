@@ -3,17 +3,20 @@
   align-items: center;
   margin-left: 32px;
   width: 684px;
-  font-size: 18px;
-  line-height: 21px;
 }
 
 .item-text {
   padding-top: 10px;
   padding-bottom: 9px;
-  margin-left: 18px;
+  padding-left: 0px;
+  margin-left: 9px;
   width: 684px;
+  font-size: 18px;
+  line-height: 21px;
   letter-spacing: 0.01em;
   color: #000000;
+  border: none;
+  background-color: transparent;
 }
 
 .item:hover {

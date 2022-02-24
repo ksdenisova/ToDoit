@@ -30,9 +30,9 @@ test("renders appropriate number of list items", () => {
 
     render(<ListView activeList = {testList}/>);
   
-    const inputForm = screen.getAllByRole("textbox");
+    const newItem = screen.getByTestId("newItem");
 
-    expect(inputForm).toHaveLength(1);
-    expect(screen.getByText(/First Item/i)).toBeInTheDocument();
-    expect(screen.getByText(/Second Item/i)).toBeInTheDocument();
+    expect(newItem).toBeInTheDocument();
+    expect(screen.getByDisplayValue(/First Item/i)).toBeInTheDocument();
+    expect(screen.getByDisplayValue(/Second Item/i)).toBeInTheDocument();
   });

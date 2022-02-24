@@ -9,7 +9,9 @@ test("renders items from to-do list", () => {
 
   render(<ListItem itemProperties = {testItem}/>);
 
-  expect(screen.getByText(/First Item/i)).toBeInTheDocument();
+  const item = screen.getByDisplayValue(/First Item/i);
+
+  expect(item).toBeInTheDocument();
 });
 
 test("renders delete button icon", () => {
@@ -95,4 +97,14 @@ test("renders edit button icon", () => {
   const icon = screen.getByTestId("editIcon");
 
   expect(icon).toBeInTheDocument();
+});
+
+test("item are disabled for editing by default", () => {
+  const testItem = {"toDoItem": "First Item", "completed": false}
+
+  render(<ListItem itemProperties = {testItem}/>);
+
+  const item = screen.getByRole("textbox");
+
+  expect(item).toBeDisabled();
 });

@@ -34,7 +34,8 @@ class NewItem extends Component {
           <input 
             className="new-item-input" type="text" 
                   value={this.state.actionFormValue} placeholder='Enter New To-Do Item'
-            onChange = {event => this.setState({actionFormValue: event.target.value})}>
+            onChange = {event => this.setState({actionFormValue: event.target.value})}
+            data-testid="newItem">
           </input>
         <div className = "List-Item-Button"/>
       </div>
