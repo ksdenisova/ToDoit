@@ -7,24 +7,24 @@ class NewItem extends Component {
     super(props);
 
     this.state ={
-      actionFormValue: ""
+      item: ""
     }
 
     this.addItemHandler = this.addItem.bind(this);
   }
   
   addItem() {
-    if (this.state.actionFormValue == "") {
+    if (this.state.item == "") {
       return;
     }
 
-    let newItem = {"toDoItem": this.state.actionFormValue, "completed": false};
+    let newItem = {"toDoItem": this.state.item, "completed": false};
     let id = this.props.activeList.items.length;
 
     this.props.activeList.items[id] = newItem;
     this.props.saveActiveList(this.props.activeList);
   
-    this.setState({actionFormValue: ""});
+    this.setState({item: ""});
   }
 
   render() {
@@ -37,9 +37,9 @@ class NewItem extends Component {
         />
         <input 
           className="new-item-input" type="text" 
-          value={this.state.actionFormValue}
+          value={this.state.item}
           placeholder="Enter New To-Do Item"
-          onChange={event => this.setState({actionFormValue: event.target.value})}>
+          onChange={event => this.setState({item: event.target.value})}>
         </input>
       </div>
     );

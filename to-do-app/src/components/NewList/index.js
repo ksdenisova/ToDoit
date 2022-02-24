@@ -7,22 +7,22 @@ class NewList extends Component {
     super(props);
 
     this.state = {
-        inputValue:""
+      title:""
     }
 
-    this.imageClickHandler = this.createNewList.bind(this)
+    this.createListHandler = this.createNewList.bind(this)
   }
   
   createNewList () {
-    if (this.state.inputValue == "") {
+    if (this.state.title == "") {
       return;
     }
     
-    let newList = { "title": this.state.inputValue, "user": "Default User", "items": [] };
+    let newList = { "title": this.state.title, "user": "Default User", "items": [] };
 
     this.props.createList(newList);
     this.props.getAllLists();
-    this.setState({inputValue: ""});
+    this.setState({title: ""});
   }
   
   render() {
@@ -30,14 +30,14 @@ class NewList extends Component {
       <div>
         <AddIcon
           className="add-icon"
-          onClick={this.imageClickHandler}
+          onClick={this.createListHandler}
           data-testid="addIcon"
         />
         <input 
           className="new-list"
           type="text" 
-          value={this.state.inputValue} 
-          onChange={event => this.setState({inputValue: event.target.value})}
+          value={this.state.title} 
+          onChange={event => this.setState({title: event.target.value})}
           placeholder="Enter your new list">     
         </input>
       </div>
