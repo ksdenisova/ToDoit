@@ -1,5 +1,5 @@
 import ListItem from '../ListItem';
-import ActionForm from '../NewItem';
+import NewItem from '../NewItem';
 import React, { Component } from 'react';
 import './style.css';
 
@@ -27,7 +27,7 @@ class ListView extends Component {
       
       view = <>
         {items}
-        <ActionForm activeList = {this.props.activeList} saveActiveList = {this.props.saveActiveList}/>
+        <NewItem activeList = {this.props.activeList} saveActiveList = {this.props.saveActiveList}/>
       </>
     }
 
