@@ -29,7 +29,7 @@ class ListTitles extends Component {
               className={this.props.activeList && title === this.props.activeList.title ? "active-list" : "inactive-list"} 
               onClick={() => this.props.saveActiveList(this.getActiveList(title))}>
               <CircleOutlinedIcon className="icon"/>
-              {entry}
+              {title}
             </li>
           </ul>
         );
