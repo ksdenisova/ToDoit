@@ -29,8 +29,7 @@ class ListTitles extends Component {
               className={this.props.activeList && entry === this.props.activeList.title ? "active-list" : "unactive-list"} 
               onClick={() => this.props.saveActiveList(this.getActiveList(entry))}>
               <CircleOutlinedIcon className="icon"/>
-              <img className= "List-Image" src="./remove-list.png" onClick={this.props.deleteActiveList}/>
-              <span>{entry}</span>
+              {entry}
             </li>
           </ul>
         );
@@ -42,8 +41,8 @@ class ListTitles extends Component {
           <div className="list-titles">
             {lists}
             <NewList 
-              createList = {this.props.createList}
-              getAllLists = {this.props.getAllLists}
+              createList={this.props.createList}
+              getAllLists={this.props.getAllLists}
             />
           </div>
       </div>);

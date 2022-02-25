@@ -34,6 +34,8 @@
 }
 
 .Submit-Button{
+  grid-column: 2;
+  grid-row: 4;
   margin-top: 2.5vh;
   height:7vh;
   width: 55vw;
