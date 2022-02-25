@@ -122,3 +122,23 @@ test("item is editable when click EditIcon", () => {
 
   expect(item.prop('disabled')).toEqual(false);
 });
+
+test("changes an item for active list", () => {
+  const testItem = {"toDoItem": "First Item", "completed": false};
+  const testList = { "id": 1, "title": "Dummy Title", "items": 
+                      [ testItem ] }
+
+  const wrapper = shallow(<ListItem activeList={testList} itemProperties={testItem} updateList={() => null}/>);
+
+  const icon = wrapper.find(EditIcon);
+  icon.simulate('click');
+  
+  const item = wrapper.find("input");
+  item.simulate("change", {target: {value: "Edited Item"}})
+
+  expect(wrapper.find("input").get(0).props.value).toEqual("Edited Item");
+
+  const expected = {"id": 1, "items": [{"completed": false, "toDoItem": "Edited Item"}], "title": "Dummy Title"}
+  
+  expect(wrapper.instance().props.activeList).toStrictEqual(expected);
+});

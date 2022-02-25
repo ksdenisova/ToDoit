@@ -13,7 +13,7 @@ class Home extends Component {
       isLoaded: false
     }
 
-    this.submitHandler = this.putActiveList.bind(this);
+    this.updateListHandler = this.putActiveList.bind(this);
     this.saveActiveListHander = this.changeActiveList.bind(this);
     this.createNewListHandler = this.postNewList.bind(this);
     this.getAllListsHandler = this.getAllLists.bind(this);
@@ -104,9 +104,10 @@ class Home extends Component {
           <ListView
             activeList = {this.state.activeList}
             saveActiveList = {this.saveActiveListHander}
+            updateList={this.updateListHandler}
           />
         </div>
-        <button className='Submit-Button button-box' disabled={isDisabled} onClick={this.submitHandler}>Submit</button>
+        <button className='Submit-Button button-box' disabled={isDisabled} onClick={this.updateListHandler}>Submit</button>
       </div>);
   }
 }

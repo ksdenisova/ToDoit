@@ -35,45 +35,47 @@ class ListItem extends Component {
   }
 
   makeItemMutable() {
-    this.setState({ immutable: false })
+    this.setState({ immutable: false });
   }
 
   editItem(name) {
     this.setState({ itemName: name });
     this.props.itemProperties.toDoItem = this.state.itemName;
+    this.props.activeList.items = [this.props.itemProperties];
+    this.props.updateList();
   }
   
   render() {
     return (
-        <div className="item">
-          <Checkbox
-            defaultChecked={this.props.itemProperties.completed}
-            onChange={this.updateItemStatusHandler}
-            icon={<CheckBoxOutlineBlankOutlinedIcon />}
-            checkedIcon={<CheckBoxOutlinedIcon />}
-            color="default"
-            disableRipple
-            />
-          <input
-            className="item-text"
-            type="text"
-            value={this.state.itemName}
-            disabled={this.state.immutable}
-            onChange={event => this.editItemHandler(event.target.value)}>
-          </input>
-          <div className="icons">
-            <EditIcon
-              className="edit-icon"
-              data-testid="editIcon"
-              onClick={this.makeItemMutableHandler}
-            />
-            <DeleteIcon 
-              className="delete-icon"
-              data-testid="deleteIcon"
-              onClick={this.deleteItemHandler}
-            />
-          </div>
+      <div className="item">
+        <Checkbox
+          defaultChecked={this.props.itemProperties.completed}
+          onChange={this.updateItemStatusHandler}
+          icon={<CheckBoxOutlineBlankOutlinedIcon />}
+          checkedIcon={<CheckBoxOutlinedIcon />}
+          color="default"
+          disableRipple
+        />
+        <input
+          className="item-text"
+          type="text"
+          value={this.state.itemName}
+          disabled={this.state.immutable}
+          onChange={event => this.editItemHandler(event.target.value)}>
+        </input>
+        <div className="icons">
+          <EditIcon
+            className="edit-icon"
+            data-testid="editIcon"
+            onClick={this.makeItemMutableHandler}
+          />
+          <DeleteIcon 
+            className="delete-icon"
+            data-testid="deleteIcon"
+            onClick={this.deleteItemHandler}
+          />
         </div>
+      </div>
     );
   }
 }
