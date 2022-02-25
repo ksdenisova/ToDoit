@@ -41,6 +41,6 @@ li:active {
   font-weight: bold;
 }
 
-.unactive-list {
+.inactive-list {
   font-weight: normal;
 }
