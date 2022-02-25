@@ -3,6 +3,7 @@ import ListItem from '.';
 import { render, screen, fireEvent } from "@testing-library/react"
 import { shallow } from "enzyme";
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
 test("renders items from to-do list", () => {
   const testItem = {"toDoItem": "First Item", "completed": false}
@@ -99,7 +100,7 @@ test("renders edit button icon", () => {
   expect(icon).toBeInTheDocument();
 });
 
-test("item are disabled for editing by default", () => {
+test("item is disabled for editing by default", () => {
   const testItem = {"toDoItem": "First Item", "completed": false}
 
   render(<ListItem itemProperties = {testItem}/>);
@@ -107,4 +108,17 @@ test("item are disabled for editing by default", () => {
   const item = screen.getByRole("textbox");
 
   expect(item).toBeDisabled();
+});
+
+test("item is editable when click EditIcon", () => {
+  const testItem = {"toDoItem": "First Item", "completed": false}
+
+  const wrapper = shallow(<ListItem itemProperties={testItem}/>);
+
+  const icon = wrapper.find(EditIcon);
+  icon.simulate('click');
+
+  const item = wrapper.find("input");
+
+  expect(item.prop('disabled')).toEqual(false);
 });
