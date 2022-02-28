@@ -138,6 +138,7 @@ test("changes an item for active list", () => {
 
   expect(wrapper.find("input").get(0).props.value).toEqual("Edited Item");
 
+  item.simulate('blur');
   const expected = {"id": 1, "items": [{"completed": false, "toDoItem": "Edited Item"}], "title": "Dummy Title"}
   
   expect(wrapper.instance().props.activeList).toStrictEqual(expected);

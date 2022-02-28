@@ -17,8 +17,9 @@ class ListItem extends Component {
 
     this.updateItemStatusHandler = this.updateItemStatus.bind(this);
     this.deleteItemHandler = this.deleteItem.bind(this);
-    this.makeItemMutableHandler = this.makeItemMutable.bind(this);
-    this.editItemHandler = this.editItem.bind(this);
+    this.setImmutableHandler = this.setImmutable.bind(this);
+    this.setItemNameHandler = this.setItemName.bind(this);
+    this.saveItemHandler = this.saveItem.bind(this);
   }
   
   updateItemStatus() {
@@ -34,15 +35,19 @@ class ListItem extends Component {
     this.props.saveActiveList(this.props.activeList);
   }
 
-  makeItemMutable() {
-    this.setState({ immutable: false });
+  setImmutable() {
+    this.setState({ immutable: !this.state.immutable });
   }
 
-  editItem(name) {
+  setItemName(name) {
     this.setState({ itemName: name });
+  }
+
+  saveItem() {
     this.props.itemProperties.toDoItem = this.state.itemName;
-    this.props.activeList.items = [this.props.itemProperties];
     this.props.updateList();
+
+    this.setImmutable();
   }
   
   render() {
@@ -61,13 +66,14 @@ class ListItem extends Component {
           type="text"
           value={this.state.itemName}
           disabled={this.state.immutable}
-          onChange={event => this.editItemHandler(event.target.value)}>
+          onChange={event => this.setItemNameHandler(event.target.value)}
+          onBlur={this.saveItemHandler}>
         </input>
         <div className="icons">
           <EditIcon
             className="edit-icon"
             data-testid="editIcon"
-            onClick={this.makeItemMutableHandler}
+            onClick={this.setImmutableHandler}
           />
           <DeleteIcon 
             className="delete-icon"
