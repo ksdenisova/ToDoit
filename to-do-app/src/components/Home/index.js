@@ -84,13 +84,14 @@ class Home extends Component {
       <div className="main">
         <h1 className="header-box">to doit</h1>
         <div className="list-box">
-          <ListTitles 
+          <ListTitles
             isLoaded={this.state.isLoaded}
             toDoLists={this.state.toDoLists}
             saveActiveList={this.saveActiveListHander}
             deleteActiveList={this.deleteListHandler}
             createList={this.createNewListHandler}
             getAllLists={this.getAllListsHandler}
+            activeList={this.state.activeList}
           />
         </div>
         <div className="item-box">

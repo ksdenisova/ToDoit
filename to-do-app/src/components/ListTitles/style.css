@@ -3,7 +3,6 @@
   height: 33px;
   left: 165px;
   top: 353px;
-  font-weight: normal;
   font-size: 28px;
   line-height: 33px;
   letter-spacing: 0.01em;
@@ -36,4 +35,12 @@ li img {
 
 li:active {
   font-weight: 800;
+}
+
+.active-list {
+  font-weight: bold;
+}
+
+.inactive-list {
+  font-weight: normal;
 }
