@@ -21,7 +21,7 @@ class ListView extends Component {
         item => <ListItem 
           key={item.name}
           activeList={this.props.activeList}
-          saveActiveList={this.props.saveActiveList}
+          changeActiveList={this.props.changeActiveList}
           item={item}
           updateList={this.props.updateList}>
         </ListItem>)
@@ -30,7 +30,7 @@ class ListView extends Component {
         {items}
         <NewItem 
           activeList={this.props.activeList}
-          saveActiveList={this.props.saveActiveList}
+          changeActiveList={this.props.changeActiveList}
           updateList={this.props.updateList}
         />
       </>

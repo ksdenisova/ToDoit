@@ -23,7 +23,7 @@ class NewItem extends Component {
     let newItem = {"id": nextId, "name": this.state.item, "completed": false};
 
     this.props.activeList.items[id] = newItem;
-    this.props.saveActiveList(this.props.activeList);
+    this.props.changeActiveList(this.props.activeList);
     this.props.updateList();
 
     this.setState({item: ""});

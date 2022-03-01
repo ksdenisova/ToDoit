@@ -8,12 +8,12 @@ beforeEach(() => {
   const testLists = 
    [
       { "id": 1, "title": "First Test Title", "items": [
-        {"toDoItem": "First Item", "completed": false},
-        {"toDoItem": "Second Item", "completed": false}
+        {"id": 1, "name": "First Item", "completed": false},
+        {"id": 2, "name": "Second Item", "completed": false}
        ]},
       { "id": 2, "title": "Second Test Title", "items": [
-        {"toDoItem": "First Item", "completed": false},
-        {"toDoItem": "Second item", "completed": false}
+        {"id": 1, "name": "First Item", "completed": false},
+        {"id": 2, "name": "Second item", "completed": false}
        ]}
     ]
 
@@ -28,7 +28,7 @@ afterEach(() => {
   jest.clearAllMocks();
 }); 
 
-test("renders ToDo lists titles in reverse order", async () => {
+test("renders ToDo lists titles", async () => {
   await act(async () => {
     render(<Home />);
   });
@@ -36,8 +36,8 @@ test("renders ToDo lists titles in reverse order", async () => {
   const lists = screen.getAllByRole('list');
 
   expect(lists).toHaveLength(2);
-  expect(lists[0]).toHaveTextContent(/Second Test Title/i);
-  expect(lists[1]).toHaveTextContent(/First Test Title/i);
+  expect(lists[0]).toHaveTextContent(/First Test Title/i);
+  expect(lists[1]).toHaveTextContent(/Second Test Title/i);
   
   global.fetch.mockRestore();
 });
@@ -46,7 +46,7 @@ test("changeActiveList changes activeList", async () => {
   const wrapper = shallow(<Home />);
 
   const testList = { "id": 1, "title": "Dummy Title", "items": 
-        [ {"toDoItem": "First Item", "completed": false} ] }
+        [ {"id": 1, "name": "First Item", "completed": false} ] }
 
   wrapper.instance().changeActiveList(testList);
 

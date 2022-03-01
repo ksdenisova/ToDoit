@@ -13,7 +13,7 @@ class NewList extends Component {
     this.createListHandler = this.createNewList.bind(this)
   }
   
-  createNewList () {
+  createNewList() {
     if (this.state.title == "") {
       return;
     }

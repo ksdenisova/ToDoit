@@ -28,7 +28,7 @@ test("adds a new item to the active list", () => {
   const testList = { "id": 1, "title": "Dummy Title", "items": 
                       [ {"id": 1, "name": "First Item", "completed": false} ] }
 
-  const wrapper = shallow(<NewItem activeList={testList} saveActiveList={() => null} updateList={() => null}/>);
+  const wrapper = shallow(<NewItem activeList={testList} changeActiveList={() => null} updateList={() => null}/>);
   
   const inputForm = wrapper.find("input");
 

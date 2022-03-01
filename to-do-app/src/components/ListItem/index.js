@@ -33,7 +33,7 @@ class ListItem extends Component {
         return item.id != removalItemId});
 
     this.props.activeList.items = remainingItems;
-    this.props.saveActiveList(this.props.activeList);
+    this.props.changeActiveList(this.props.activeList);
     this.props.updateList();
   }
 
