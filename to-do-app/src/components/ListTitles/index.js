@@ -13,7 +13,7 @@ class ListTitles extends Component {
   }
 
   getTitles() {
-    return this.props.toDoLists.map(entry => entry.title);
+    return this.props.toDoLists.map(list => list.title);
   }
 
   render() {
@@ -23,12 +23,13 @@ class ListTitles extends Component {
       let titles = this.getTitles();
 
       lists = titles.map(
-        entry => 
-          <ul key={entry}>
-            <li onClick={() => this.props.saveActiveList(this.getActiveList(entry))}>
+        title => 
+          <ul key={title}>
+            <li
+              className={this.props.activeList && title === this.props.activeList.title ? "active-list" : "inactive-list"} 
+              onClick={() => this.props.saveActiveList(this.getActiveList(title))}>
               <CircleOutlinedIcon className="icon"/>
-              <img className= "List-Image" src="./remove-list.png" onClick={this.props.deleteActiveList}/>
-              <span>{entry}</span>
+              {title}
             </li>
           </ul>
         );
@@ -40,8 +41,8 @@ class ListTitles extends Component {
           <div className="list-titles">
             {lists}
             <NewList 
-              createList = {this.props.createList}
-              getAllLists = {this.props.getAllLists}
+              createList={this.props.createList}
+              getAllLists={this.props.getAllLists}
             />
           </div>
       </div>);

@@ -28,19 +28,23 @@ class ListView extends Component {
       
       view = <>
         {items}
-        <NewItem activeList = {this.props.activeList} saveActiveList = {this.props.saveActiveList} updateList={this.props.updateList}/>
+        <NewItem 
+          activeList={this.props.activeList}
+          saveActiveList={this.props.saveActiveList}
+          updateList={this.props.updateList}
+        />
       </>
     }
 
     return (
+      <div>
         <div>
-          <div>
-            <h3 className="active-list-header">{title}</h3>
-          </div>
-          <div className="items">
-            {view}
-          </div>
+          <h3 className="active-list-header">{title}</h3>
         </div>
+        <div className="items">
+          {view}
+        </div>
+      </div>
     );
   }
 }
