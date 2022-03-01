@@ -24,7 +24,7 @@ test("renders form for a new list", () => {
   expect(textbox).toBeInTheDocument();
 });
 
-test("adds a new list when click AddIcon", () => {
+test("adds a new list when click AddIcon", async () => {
   const createListSpy = jest.fn();
   const getAllListsSpy = jest.fn();
 
@@ -42,14 +42,14 @@ test("adds a new list when click AddIcon", () => {
 
   const newList = {"title": testTitle, "user": "Default User", "items": []};
 
-  wrapper.find(AddIcon).simulate("click");
+  await wrapper.find(AddIcon).simulate("click");
 
   expect(wrapper.instance().props.createList).toHaveBeenCalledTimes(1);
   expect(wrapper.instance().props.createList).toHaveBeenCalledWith(newList);
   expect(wrapper.instance().props.getAllLists).toHaveBeenCalledTimes(1);
 });
 
-test("adds a new list when press Enter", () => {
+test("adds a new list when press Enter", async () => {
   const createListSpy = jest.fn();
   const getAllListsSpy = jest.fn();
 
@@ -67,7 +67,7 @@ test("adds a new list when press Enter", () => {
 
   const newList = {"title": testTitle, "user": "Default User", "items": []};
 
-  inputForm.simulate("keypress", {key: "Enter"});
+  await inputForm.simulate("keypress", {key: "Enter"});
 
   expect(wrapper.instance().props.createList).toHaveBeenCalledTimes(1);
   expect(wrapper.instance().props.createList).toHaveBeenCalledWith(newList);

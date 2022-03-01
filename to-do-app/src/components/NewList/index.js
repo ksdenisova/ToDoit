@@ -20,14 +20,14 @@ class NewList extends Component {
     }
   }
   
-  createNewList() {
+  async createNewList() {
     if (this.state.title === "") {
       return;
     }
     
     let newList = { "title": this.state.title, "user": "Default User", "items": [] };
 
-    this.props.createList(newList);
+    await this.props.createList(newList);
     this.props.getAllLists();
     this.setState({title: ""});
   }

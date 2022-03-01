@@ -20,7 +20,7 @@ class NewItem extends Component {
     }
   }
   
-  addItem() {
+  async addItem() {
     if (this.state.item === "") {
       return;
     }
@@ -36,7 +36,7 @@ class NewItem extends Component {
 
     this.props.activeList.items[id] = newItem;
     this.props.changeActiveList(this.props.activeList);
-    this.props.updateList();
+    await this.props.updateList();
 
     this.setState({item: ""});
   }

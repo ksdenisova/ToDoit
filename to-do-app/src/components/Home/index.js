@@ -37,8 +37,8 @@ class Home extends Component {
     return fetch(url, {method: "POST", headers: new Headers({'content-type': 'application/json'}), body: JSON.stringify(list)});
   }
 
-  deleteActiveList() {
-    this.deleteList();
+  async deleteActiveList() {
+    await this.deleteList();
     this.changeActiveList(undefined);
     this.setState({ isLoaded: false })
     this.getAllLists();

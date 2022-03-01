@@ -27,7 +27,7 @@ class ListItem extends Component {
     this.props.updateList();
   }
 
-  deleteItem () {
+  deleteItem() {
     let removalItemId = this.props.item.id;
     let remainingItems = this.props.activeList.items.filter((item) => {
         return item.id !== removalItemId});
