@@ -4,10 +4,6 @@ import React, { Component } from 'react';
 import './style.css';
 
 class ListView extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     let view;
     let title;

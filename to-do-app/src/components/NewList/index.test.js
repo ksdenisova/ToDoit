@@ -24,7 +24,7 @@ test("renders form for a new list", () => {
   expect(textbox).toBeInTheDocument();
 });
 
-test("adds a new item to the active list", () => {
+test("adds a new list when click AddIcon", () => {
   const createListSpy = jest.fn();
   const getAllListsSpy = jest.fn();
 
@@ -43,6 +43,31 @@ test("adds a new item to the active list", () => {
   const newList = {"title": testTitle, "user": "Default User", "items": []};
 
   wrapper.find(AddIcon).simulate("click");
+
+  expect(wrapper.instance().props.createList).toHaveBeenCalledTimes(1);
+  expect(wrapper.instance().props.createList).toHaveBeenCalledWith(newList);
+  expect(wrapper.instance().props.getAllLists).toHaveBeenCalledTimes(1);
+});
+
+test("adds a new list when press Enter", () => {
+  const createListSpy = jest.fn();
+  const getAllListsSpy = jest.fn();
+
+  const wrapper = shallow(<NewList createList={createListSpy} getAllLists={getAllListsSpy}/>);
+  
+  render(<NewList createList={createListSpy} getAllLists={getAllListsSpy}/>);
+
+  const inputForm = wrapper.find("input");
+
+  const testTitle = "New List";
+
+  inputForm.simulate("change", {target: {value: testTitle}});
+
+  expect(wrapper.find("input").get(0).props.value).toEqual(testTitle);
+
+  const newList = {"title": testTitle, "user": "Default User", "items": []};
+
+  inputForm.simulate("keypress", {key: "Enter"});
 
   expect(wrapper.instance().props.createList).toHaveBeenCalledTimes(1);
   expect(wrapper.instance().props.createList).toHaveBeenCalledWith(newList);
