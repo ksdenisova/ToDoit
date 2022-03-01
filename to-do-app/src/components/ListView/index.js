@@ -1,5 +1,5 @@
 import ListItem from '../ListItem';
-import ActionForm from '../NewItem';
+import NewItem from '../NewItem';
 import React, { Component } from 'react';
 import './style.css';
 
@@ -19,16 +19,16 @@ class ListView extends Component {
 
         const items = this.props.activeList.items.map(
         item => <ListItem 
-          key={item.toDoItem} 
+          key={item.name}
           activeList={this.props.activeList}
           saveActiveList={this.props.saveActiveList}
-          itemProperties={item}
+          item={item}
           updateList={this.props.updateList}>
         </ListItem>)
       
       view = <>
         {items}
-        <ActionForm activeList = {this.props.activeList} saveActiveList = {this.props.saveActiveList}/>
+        <NewItem activeList = {this.props.activeList} saveActiveList = {this.props.saveActiveList} updateList={this.props.updateList}/>
       </>
     }
 

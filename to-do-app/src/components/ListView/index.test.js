@@ -12,9 +12,9 @@ test("renders logo if active list is empty", () => {
 
 test("renders appropriate number of list items", () => {
     const testList = {"title": "First Test Title", "items": [
-        {"toDoItem": "First Item", "completed": false},
-        {"toDoItem": "Second Item", "completed": false},
-        {"toDoItem": "Third", "completed": false}]}
+        {"id": 1, "name": "First Item", "completed": false},
+        {"id": 2, "name": "Second Item", "completed": false},
+        {"id": 3, "name": "Third", "completed": false}]}
 
     render(<ListView activeList = {testList}/>);
   
@@ -25,8 +25,8 @@ test("renders appropriate number of list items", () => {
 
   test("renders items from to-do list", () => {
     const testList = {"title": "First Test Title", "items": [
-        {"toDoItem": "First Item", "completed": false},
-        {"toDoItem": "Second Item", "completed": false}]}
+        {"id": 1, "name": "First Item", "completed": false},
+        {"id": 2, "name": "Second Item", "completed": false}]}
 
     render(<ListView activeList = {testList}/>);
   

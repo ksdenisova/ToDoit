@@ -18,12 +18,14 @@ class NewItem extends Component {
       return;
     }
 
-    let newItem = {"toDoItem": this.state.actionFormValue, "completed": false};
     let id = this.props.activeList.items.length;
+    let nextId = this.props.activeList.items[id - 1].id + 1;
+    let newItem = {"id": nextId, "name": this.state.actionFormValue, "completed": false};
 
     this.props.activeList.items[id] = newItem;
     this.props.saveActiveList(this.props.activeList);
-  
+    this.props.updateList();
+    
     this.setState({actionFormValue: ""});
   }
 

@@ -11,7 +11,7 @@ class ListItem extends Component {
     super(props);
 
     this.state = {
-      itemName: props.itemProperties.toDoItem,
+      itemName: props.item.name,
       immutable: true
     }
 
@@ -23,14 +23,14 @@ class ListItem extends Component {
   }
   
   updateItemStatus() {
-    this.props.itemProperties.completed = !this.props.itemProperties.completed;
+    this.props.item.completed = !this.props.item.completed;
     this.props.updateList();
   }
 
   deleteItem () {
-    let removalItem = this.props.itemProperties.toDoItem;
+    let removalItemId = this.props.item.id;
     let remainingItems = this.props.activeList.items.filter((item) => {
-        return item.toDoItem != removalItem});
+        return item.id != removalItemId});
 
     this.props.activeList.items = remainingItems;
     this.props.saveActiveList(this.props.activeList);
@@ -46,7 +46,7 @@ class ListItem extends Component {
   }
 
   updateItemName() {
-    this.props.itemProperties.toDoItem = this.state.itemName;
+    this.props.item.name = this.state.itemName;
     this.props.updateList();
 
     this.setImmutable();
@@ -56,7 +56,7 @@ class ListItem extends Component {
     return (
       <div className="item">
         <Checkbox
-          defaultChecked={this.props.itemProperties.completed}
+          defaultChecked={this.props.item.completed}
           onChange={this.updateItemStatusHandler}
           icon={<CheckBoxOutlineBlankOutlinedIcon />}
           checkedIcon={<CheckBoxOutlinedIcon />}

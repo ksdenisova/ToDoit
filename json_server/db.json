@@ -1,32 +1,84 @@
 {
-    "lists": [
-      { "id": 1, "title": "Shopping", "user": "Kseniia", "items": [
-        {"toDoItem": "Buy Shirt", "completed": false},
-        {"toDoItem": "Get Gift", "completed": false},
-        {"toDoItem": "Return Purchase", "completed": false}
-      ] },
-
-      { "id": 2, "title": "School", "user": "Pedro", "items": [
-        {"toDoItem": "Do homework", "completed": false},
-        {"toDoItem": "Do science project", "completed": false}
-       ] },
-
-      { "id": 3, "title": "Groceries", "user": "Matt", "items": [
-        {"toDoItem": "apples", "completed": false},
-        {"toDoItem": "chips", "completed": false},
-        {"toDoItem": "beer", "completed": false}
-      ]},
-
-      { "id": 4, "title": "Water Plants", "user": "Matt", "items": [
-        {"toDoItem": "apples", "completed": false},
-        {"toDoItem": "chips", "completed": false},
-        {"toDoItem": "beer", "completed": false}
-      ]},
-      
-      { "id": 5, "title": "Workout Routine", "user": "Matt", "items": [
-        {"toDoItem": "apples", "completed": false},
-        {"toDoItem": "chips", "completed": false},
-        {"toDoItem": "beer", "completed": false}
-      ]}
-    ]
+  "lists": [
+    {
+      "id": 1,
+      "title": "Shopping",
+      "user": "Kseniia",
+      "items": [
+        {
+          "id": 1,
+          "name": "Buy Shirt",
+          "completed": false
+        },
+        {
+          "id": 2,
+          "name": "Get Gift",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "School",
+      "user": "Pedro",
+      "items": [
+        {
+          "id": 1,
+          "name": "Do homework",
+          "completed": false
+        },
+        {
+          "id": 2,
+          "name": "Do science project",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Groceries",
+      "user": "Matt",
+      "items": [
+        {
+          "id": 1,
+          "name": "apples",
+          "completed": false
+        },
+        {
+          "id": 2,
+          "name": "chips",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Water Plants",
+      "user": "Matt",
+      "items": [
+        {
+          "id": 3,
+          "name": "rose",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Workout Routine",
+      "user": "Matt",
+      "items": [
+        {
+          "id": 1,
+          "name": "apples",
+          "completed": false
+        },
+        {
+          "id": 2,
+          "name": "chips",
+          "completed": false
+        }
+      ]
+    }
+  ]
 }

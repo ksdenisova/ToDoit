@@ -6,9 +6,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
 test("renders items from to-do list", () => {
-  const testItem = {"toDoItem": "First Item", "completed": false}
+  const testItem = {"id": 1, "name": "First Item", "completed": false}
 
-  render(<ListItem itemProperties = {testItem}/>);
+  render(<ListItem item={testItem}/>);
 
   const item = screen.getByDisplayValue(/First Item/i);
 
@@ -16,9 +16,9 @@ test("renders items from to-do list", () => {
 });
 
 test("renders delete button icon", () => {
-  const testItem = {"toDoItem": "First Item", "completed": false}
+  const testItem = {"id": 1, "name": "First Item", "completed": false}
 
-  render(<ListItem itemProperties = {testItem}/>);
+  render(<ListItem item={testItem}/>);
 
   const icon = screen.getByTestId("deleteIcon");
 
@@ -26,9 +26,9 @@ test("renders delete button icon", () => {
 });
 
 test("checkbox is rendered once", () => {
-  const testItem = {"toDoItem": "First Item", "completed": false}
+  const testItem = {"id": 1, "name": "First Item", "completed": false}
 
-  render(<ListItem itemProperties = {testItem}/>);
+  render(<ListItem item={testItem}/>);
 
   const checkbox = screen.getAllByRole("checkbox");
 
@@ -36,9 +36,9 @@ test("checkbox is rendered once", () => {
 });
 
 test("checkbox is marked if item is done", () => {
-  const testItem = {"toDoItem": "First Item", "completed": true}
+  const testItem = {"id": 1, "name": "First Item", "completed": true}
 
-  render(<ListItem itemProperties = {testItem}/>);
+  render(<ListItem item={testItem}/>);
 
   const checkbox = screen.getByRole("checkbox");
 
@@ -46,9 +46,9 @@ test("checkbox is marked if item is done", () => {
 });
 
 test("checkbox completed switches states after click", () => {
-  const testItem = {"toDoItem": "First Item", "completed": true}
+  const testItem = {"id": 1, "name": "First Item", "completed": true}
 
-  render(<ListItem itemProperties = {testItem} updateList={() => null}/>);
+  render(<ListItem item={testItem} updateList={() => null}/>);
 
   const checkbox = screen.getByRole("checkbox");
 
@@ -58,43 +58,43 @@ test("checkbox completed switches states after click", () => {
 });
 
 test("changes the status of active list", () => {
-  const testItem = {"toDoItem": "First Item", "completed": false}
+  const testItem = {"id": 1, "name": "First Item", "completed": false}
 
-  const wrapper = shallow(<ListItem itemProperties={testItem} updateList={() => null}/>);
+  const wrapper = shallow(<ListItem item={testItem} updateList={() => null}/>);
   
-  render(<ListItem itemProperties={testItem} updateList={() => null}/>);
+  render(<ListItem item={testItem} updateList={() => null}/>);
 
   const checkbox = screen.getByRole("checkbox");
 
   fireEvent.click(checkbox);
 
-  expect(wrapper.instance().props.itemProperties).toStrictEqual({"toDoItem": "First Item", "completed": true});
+  expect(wrapper.instance().props.item).toStrictEqual({"id": 1, "name": "First Item", "completed": true});
 });
 
 test("removes an item from active list", () => {
   const testList = { "id": 1, "title": "Dummy Title", "items": 
-                      [ {"toDoItem": "First Item", "completed": false},
-                        {"toDoItem": "Should Be Deleted", "completed": false} ] }
+                      [ {"id": 1, "name": "First Item", "completed": false},
+                        {"id": 2, "name": "Should Be Deleted", "completed": false} ] }
 
-  const itemToDelete = {"toDoItem": "Should Be Deleted", "completed": false}
+  const itemToDelete = {"id": 2, "name": "Should Be Deleted", "completed": false}
 
   const wrapper = shallow(<ListItem activeList={testList}
                                     saveActiveList={(list) => list}
-                                    itemProperties={itemToDelete}
+                                    item={itemToDelete}
                                     updateList={() => null}/>);
   
   wrapper.find(DeleteIcon).simulate("click");
 
-  const expected = {"id": 1, "title": "Dummy Title", "items": [{"completed": false, "toDoItem": "First Item"}]}
+  const expected = {"id": 1, "title": "Dummy Title", "items": [{"id": 1, "name": "First Item", "completed": false}]}
   
   expect(wrapper.instance().props.activeList).toEqual(expected);
 });
 
 
 test("renders edit button icon", () => {
-  const testItem = {"toDoItem": "First Item", "completed": false}
+  const testItem = {"id": 1, "name": "First Item", "completed": false}
 
-  render(<ListItem itemProperties = {testItem}/>);
+  render(<ListItem item={testItem}/>);
 
   const icon = screen.getByTestId("editIcon");
 
@@ -102,9 +102,9 @@ test("renders edit button icon", () => {
 });
 
 test("item is disabled for editing by default", () => {
-  const testItem = {"toDoItem": "First Item", "completed": false}
+  const testItem = {"id": 1, "name": "First Item", "completed": false}
 
-  render(<ListItem itemProperties = {testItem}/>);
+  render(<ListItem item={testItem}/>);
 
   const item = screen.getByRole("textbox");
 
@@ -112,9 +112,9 @@ test("item is disabled for editing by default", () => {
 });
 
 test("item is editable when click EditIcon", () => {
-  const testItem = {"toDoItem": "First Item", "completed": false}
+  const testItem = {"id": 1, "name": "First Item", "completed": false}
 
-  const wrapper = shallow(<ListItem itemProperties={testItem}/>);
+  const wrapper = shallow(<ListItem item={testItem}/>);
 
   const icon = wrapper.find(EditIcon);
   icon.simulate('click');
@@ -125,11 +125,11 @@ test("item is editable when click EditIcon", () => {
 });
 
 test("changes an item for active list", () => {
-  const testItem = {"toDoItem": "First Item", "completed": false};
+  const testItem = {"id": 1, "name": "First Item", "completed": false};
   const testList = { "id": 1, "title": "Dummy Title", "items": 
                       [ testItem ] }
 
-  const wrapper = shallow(<ListItem activeList={testList} itemProperties={testItem} updateList={() => null}/>);
+  const wrapper = shallow(<ListItem activeList={testList} item={testItem} updateList={() => null}/>);
 
   const icon = wrapper.find(EditIcon);
   icon.simulate('click');
@@ -140,7 +140,7 @@ test("changes an item for active list", () => {
   expect(wrapper.find("input").get(0).props.value).toEqual("Edited Item");
 
   item.simulate('blur');
-  const expected = {"id": 1, "items": [{"completed": false, "toDoItem": "Edited Item"}], "title": "Dummy Title"}
+  const expected = {"id": 1, "items": [{"id": 1, "name": "Edited Item", "completed": false}], "title": "Dummy Title"}
   
   expect(wrapper.instance().props.activeList).toStrictEqual(expected);
 });

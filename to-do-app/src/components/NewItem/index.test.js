@@ -26,12 +26,10 @@ test("renders form for a new item", () => {
 
 test("adds a new item to the active list", () => {
   const testList = { "id": 1, "title": "Dummy Title", "items": 
-                      [ {"toDoItem": "First Item", "completed": false} ] }
+                      [ {"id": 1, "name": "First Item", "completed": false} ] }
 
-  const wrapper = shallow(<NewItem activeList={testList} saveActiveList={() => null}/>);
+  const wrapper = shallow(<NewItem activeList={testList} saveActiveList={() => null} updateList={() => null}/>);
   
-  render(<NewItem activeList={testList} saveActiveList={() => null}/>);
-
   const inputForm = wrapper.find("input");
 
   inputForm.simulate("change", {target: {value: "New Item"}})
@@ -40,7 +38,7 @@ test("adds a new item to the active list", () => {
 
   wrapper.find(AddIcon).simulate("click");
 
-  const expected = {"id": 1, "items": [{"completed": false, "toDoItem": "First Item"}, {"completed": false, "toDoItem": "New Item"}], "title": "Dummy Title"}
+  const expected = {"id": 1, "items": [{"id": 1, "name": "First Item", "completed": false}, {"id": 2, "name": "New Item", "completed": false,}], "title": "Dummy Title"}
   
   expect(wrapper.instance().props.activeList).toStrictEqual(expected);
 });
