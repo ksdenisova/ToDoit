@@ -48,7 +48,7 @@ test("checkbox is marked if item is done", () => {
 test("checkbox completed switches states after click", () => {
   const testItem = {"toDoItem": "First Item", "completed": true}
 
-  render(<ListItem itemProperties = {testItem}/>);
+  render(<ListItem itemProperties = {testItem} updateList={() => null}/>);
 
   const checkbox = screen.getByRole("checkbox");
 
@@ -60,9 +60,9 @@ test("checkbox completed switches states after click", () => {
 test("changes the status of active list", () => {
   const testItem = {"toDoItem": "First Item", "completed": false}
 
-  const wrapper = shallow(<ListItem itemProperties={testItem}/>);
+  const wrapper = shallow(<ListItem itemProperties={testItem} updateList={() => null}/>);
   
-  render(<ListItem itemProperties={testItem}/>);
+  render(<ListItem itemProperties={testItem} updateList={() => null}/>);
 
   const checkbox = screen.getByRole("checkbox");
 
@@ -78,10 +78,11 @@ test("removes an item from active list", () => {
 
   const itemToDelete = {"toDoItem": "Should Be Deleted", "completed": false}
 
-  const wrapper = shallow(<ListItem activeList={testList} saveActiveList={(list) => list} itemProperties={itemToDelete}/>);
+  const wrapper = shallow(<ListItem activeList={testList}
+                                    saveActiveList={(list) => list}
+                                    itemProperties={itemToDelete}
+                                    updateList={() => null}/>);
   
-  render(<ListItem activeList={testList} saveActiveList={(list) => list} itemProperties={itemToDelete}/>);
-
   wrapper.find(DeleteIcon).simulate("click");
 
   const expected = {"id": 1, "title": "Dummy Title", "items": [{"completed": false, "toDoItem": "First Item"}]}

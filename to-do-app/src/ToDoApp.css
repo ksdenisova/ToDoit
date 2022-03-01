@@ -28,16 +28,6 @@
   height: calc(5px + 2vmin);
 }
 
-.Submit-Button{
-  margin-top: 2.5vh;
-  height:7vh;
-  width: 55vw;
-  min-width: 296px;
-  max-width: 780px;
-  border-radius: 12px;
-  font-size: calc(15px + 2vmin);
-}
-
 ul:hover{
   cursor: pointer;
 }

@@ -107,7 +107,6 @@ class Home extends Component {
             updateList={this.updateListHandler}
           />
         </div>
-        <button className='Submit-Button button-box' disabled={isDisabled} onClick={this.updateListHandler}>Submit</button>
       </div>);
   }
 }

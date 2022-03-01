@@ -16,14 +16,15 @@ class ListItem extends Component {
     }
 
     this.updateItemStatusHandler = this.updateItemStatus.bind(this);
+    this.updateItemNameHandler = this.updateItemName.bind(this);
     this.deleteItemHandler = this.deleteItem.bind(this);
     this.setImmutableHandler = this.setImmutable.bind(this);
     this.setItemNameHandler = this.setItemName.bind(this);
-    this.saveItemHandler = this.saveItem.bind(this);
   }
   
   updateItemStatus() {
     this.props.itemProperties.completed = !this.props.itemProperties.completed;
+    this.props.updateList();
   }
 
   deleteItem () {
@@ -33,6 +34,7 @@ class ListItem extends Component {
 
     this.props.activeList.items = remainingItems;
     this.props.saveActiveList(this.props.activeList);
+    this.props.updateList();
   }
 
   setImmutable() {
@@ -43,7 +45,7 @@ class ListItem extends Component {
     this.setState({ itemName: name });
   }
 
-  saveItem() {
+  updateItemName() {
     this.props.itemProperties.toDoItem = this.state.itemName;
     this.props.updateList();
 
@@ -67,7 +69,7 @@ class ListItem extends Component {
           value={this.state.itemName}
           disabled={this.state.immutable}
           onChange={event => this.setItemNameHandler(event.target.value)}
-          onBlur={this.saveItemHandler}>
+          onBlur={this.updateItemNameHandler}>
         </input>
         <div className="icons">
           <EditIcon
