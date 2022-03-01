@@ -95,7 +95,8 @@ class Home extends Component {
           />
         </div>
         <div className="item-box">
-          <ListViewactiveList={this.state.activeList}
+          <ListView
+            activeList={this.state.activeList}
             saveActiveList={this.saveActiveListHander}
             updateList={this.updateListHandler}
           />
@@ -106,13 +107,6 @@ class Home extends Component {
           data-testid="deleteButton"
           onClick={this.deleteListHandler}>
             Delete List
-        </button>
-        <button
-          className='Submit-Button'
-          disabled={isDisabled}
-          data-testid="submitButton"
-          onClick={this.submitHandler}>
-            Submit
         </button>
       </div>);
   }
