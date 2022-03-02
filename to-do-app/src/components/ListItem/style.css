@@ -46,3 +46,7 @@
   font-style: italic;
   color: #757575;
 }
+
+.hidden {
+  visibility: hidden;
+}

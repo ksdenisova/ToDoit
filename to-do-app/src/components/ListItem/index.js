@@ -27,7 +27,11 @@ class ListItem extends Component {
     this.props.updateList();
   }
 
-  deleteItem () {
+  deleteItem() {
+    if (this.props.item.completed) {
+      return;
+    }
+
     let removalItemId = this.props.item.id;
     let remainingItems = this.props.activeList.items.filter((item) => {
         return item.id != removalItemId});
@@ -73,12 +77,12 @@ class ListItem extends Component {
         </input>
         <div className="icons">
           <EditIcon
-            className="edit-icon"
+            className={this.props.item.completed ?  "hidden" :  "edit-icon"}
             data-testid="editIcon"
             onClick={this.setImmutableHandler}
           />
           <DeleteIcon 
-            className="delete-icon"
+            className={this.props.item.completed ?  "hidden" :  "delete-icon"}
             data-testid="deleteIcon"
             onClick={this.deleteItemHandler}
           />
