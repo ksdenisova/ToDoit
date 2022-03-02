@@ -64,7 +64,7 @@ class ListItem extends Component {
           disableRipple
         />
         <input
-          className="item-text"
+          className={this.props.item.completed ? "item-text completed-item" : "item-text"}
           type="text"
           value={this.state.itemName}
           disabled={this.state.immutable}

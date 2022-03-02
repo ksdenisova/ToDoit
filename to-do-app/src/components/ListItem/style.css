@@ -40,3 +40,9 @@
   margin-right: 12px;
   color: #E47B7B;
 }
+
+.completed-item {
+  text-decoration: line-through;
+  font-style: italic;
+  color: #757575;
+}

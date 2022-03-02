@@ -144,3 +144,14 @@ test("changes an item for active list", () => {
   
   expect(wrapper.instance().props.activeList).toStrictEqual(expected);
 });
+
+
+test("uses 'complited-item' style selector if item is completed", () => {
+  const testItem = {"id": 1, "name": "First Item", "completed": true};
+
+  const wrapper = shallow(<ListItem item={testItem}/>);
+
+  const item = wrapper.find("input");
+
+  expect(item.hasClass('item-text completed-item')).toBeTruthy();
+});

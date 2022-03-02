@@ -11,28 +11,28 @@ test("renders logo if active list is empty", () => {
 });
 
 test("renders appropriate number of list items", () => {
-    const testList = {"title": "First Test Title", "items": [
-        {"id": 1, "name": "First Item", "completed": false},
-        {"id": 2, "name": "Second Item", "completed": false},
-        {"id": 3, "name": "Third", "completed": false}]}
+  const testList = {"title": "First Test Title", "items": [
+    {"id": 1, "name": "First Item", "completed": false},
+    {"id": 2, "name": "Second Item", "completed": false},
+    {"id": 3, "name": "Third", "completed": false}]}
 
-    render(<ListView activeList = {testList}/>);
+  render(<ListView activeList = {testList}/>);
   
-    const items = screen.getAllByRole("checkbox");
+  const items = screen.getAllByRole("checkbox");
 
-    expect(items).toHaveLength(3);
-  });
+  expect(items).toHaveLength(3);
+});
 
-  test("renders items from to-do list", () => {
-    const testList = {"title": "First Test Title", "items": [
-        {"id": 1, "name": "First Item", "completed": false},
-        {"id": 2, "name": "Second Item", "completed": false}]}
+test("renders items from to-do list", () => {
+  const testList = {"title": "First Test Title", "items": [
+    {"id": 1, "name": "First Item", "completed": false},
+    {"id": 2, "name": "Second Item", "completed": false}]}
 
-    render(<ListView activeList = {testList}/>);
+  render(<ListView activeList = {testList}/>);
   
-    const newItem = screen.getByTestId("newItem");
+  const newItem = screen.getByTestId("newItem");
 
-    expect(newItem).toBeInTheDocument();
-    expect(screen.getByDisplayValue(/First Item/i)).toBeInTheDocument();
-    expect(screen.getByDisplayValue(/Second Item/i)).toBeInTheDocument();
-  });
+  expect(newItem).toBeInTheDocument();
+  expect(screen.getByDisplayValue(/First Item/i)).toBeInTheDocument();
+  expect(screen.getByDisplayValue(/Second Item/i)).toBeInTheDocument();
+});
