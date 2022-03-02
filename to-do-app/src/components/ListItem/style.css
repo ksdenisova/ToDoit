@@ -2,16 +2,41 @@
   display: flex;
   align-items: center;
   margin-left: 32px;
-  width: 329px;
-  font-size: 18px;
-  line-height: 21px;
+  width: 684px;
 }
 
 .item-text {
   padding-top: 10px;
   padding-bottom: 9px;
-  margin-left: 18px;
-  width: 329px;
+  padding-left: 0px;
+  margin-left: 9px;
+  width: 684px;
+  font-size: 18px;
+  line-height: 21px;
   letter-spacing: 0.01em;
   color: #000000;
+  border: none;
+  background-color: transparent;
+}
+
+.item:hover {
+  background-color: #F3F4F9;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.icons {
+  display: none;
+}
+
+.item:hover .icons {
+  display: flex;
+}
+
+.edit-icon {
+  margin-right: 19px;
+}
+
+.delete-icon {
+  margin-right: 12px;
+  color: #E47B7B;
 }

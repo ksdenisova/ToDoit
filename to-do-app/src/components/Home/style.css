@@ -6,7 +6,7 @@
   background: #3F51B5;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 338px;
+  grid-template-rows: 338px 507px;
   grid-gap: 10px;
 }
 

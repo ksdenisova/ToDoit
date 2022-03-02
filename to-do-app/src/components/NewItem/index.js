@@ -18,12 +18,14 @@ class NewItem extends Component {
       return;
     }
 
-    let newItem = {"toDoItem": this.state.item, "completed": false};
     let id = this.props.activeList.items.length;
+    let nextId = this.props.activeList.items[id - 1].id + 1;
+    let newItem = {"id": nextId, "name": this.state.item, "completed": false};
 
     this.props.activeList.items[id] = newItem;
     this.props.saveActiveList(this.props.activeList);
-  
+    this.props.updateList();
+
     this.setState({item: ""});
   }
 
@@ -39,7 +41,8 @@ class NewItem extends Component {
           className="new-item-input" type="text" 
           value={this.state.item}
           placeholder="Enter New To-Do Item"
-          onChange={event => this.setState({item: event.target.value})}>
+          onChange={event => this.setState({item: event.target.value})}
+          data-testid="newItem">
         </input>
       </div>
     );

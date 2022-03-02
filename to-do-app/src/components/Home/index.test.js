@@ -53,55 +53,6 @@ test("changeActiveList changes activeList", async () => {
   expect(wrapper.state().activeList.title).toBe("Dummy Title");
 })
 
-test("renders submit button", () => {
-  render(<Home />);
-
-  const button = screen.getByTestId("submitButton");
-
-  expect(button).toBeInTheDocument();
-  expect(button).toHaveTextContent("Submit");
-})
-
-test("submit button is disabled if there is no active lists", () => {
-  render(<Home />);
-
-  const button = screen.getByTestId("submitButton");
-
-  expect(button).toBeDisabled();
-})
-
-test("submit button is enabled if list is active", async () => {
-  const wrapper = shallow(<Home />);
-
-  await act(async () => {
-    render(<Home />);
-  });
-
-  wrapper.setState({ activeList: "some list" })
-  const button = wrapper.find({ "data-testid": "submitButton" });
-
-  expect(button.prop('disabled')).toEqual(false);
-})
-
-test("calls the putActiveList when press submit button", async () => {
-  const spy = jest.spyOn(Home.prototype, "putActiveList");
-  const wrapper = shallow(<Home/>);
-
-  await act(async () => {
-    render(<Home />);
-  });
-
-  wrapper.setState({ activeList: "some list" })
-
-  const button = wrapper.find({ "data-testid": "submitButton" });
-
-  expect(button.prop('disabled')).toEqual(false);
-
-  button.simulate("click");
-
-  expect(Home.prototype.putActiveList).toHaveBeenCalledTimes(1);
-})
-
 test("renders delete list button", () => {
   render(<Home />);
 
