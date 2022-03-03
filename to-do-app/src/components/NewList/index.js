@@ -10,17 +10,24 @@ class NewList extends Component {
       title:""
     }
 
-    this.createListHandler = this.createNewList.bind(this)
+    this.createListHandler = this.createNewList.bind(this);
+    this.enterPressHandler = this.enterPress.bind(this);
+  }
+
+  enterPress(event) {
+    if (event.key === "Enter") {
+      this.createNewList();
+    }
   }
   
-  createNewList () {
-    if (this.state.title == "") {
+  async createNewList() {
+    if (this.state.title === "") {
       return;
     }
     
     let newList = { "title": this.state.title, "user": "Default User", "items": [] };
 
-    this.props.createList(newList);
+    await this.props.createList(newList);
     this.props.getAllLists();
     this.setState({title: ""});
   }
@@ -38,7 +45,8 @@ class NewList extends Component {
           type="text" 
           value={this.state.title} 
           onChange={event => this.setState({title: event.target.value})}
-          placeholder="Enter your new list">     
+          onKeyPress={this.enterPressHandler}
+          placeholder="Enter your new list">
         </input>
       </div>
     );

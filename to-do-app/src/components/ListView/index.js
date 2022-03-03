@@ -4,10 +4,6 @@ import React, { Component } from 'react';
 import './style.css';
 
 class ListView extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     let view;
     let title;
@@ -21,7 +17,7 @@ class ListView extends Component {
         item => <ListItem 
           key={item.name}
           activeList={this.props.activeList}
-          saveActiveList={this.props.saveActiveList}
+          changeActiveList={this.props.changeActiveList}
           item={item}
           updateList={this.props.updateList}>
         </ListItem>)
@@ -30,7 +26,7 @@ class ListView extends Component {
         {items}
         <NewItem 
           activeList={this.props.activeList}
-          saveActiveList={this.props.saveActiveList}
+          changeActiveList={this.props.changeActiveList}
           updateList={this.props.updateList}
         />
       </>

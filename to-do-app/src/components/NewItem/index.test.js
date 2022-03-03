@@ -24,11 +24,11 @@ test("renders form for a new item", () => {
   expect(textbox).toBeInTheDocument();
 });
 
-test("adds a new item to the active list", () => {
+test("adds a new item to the active list when click AddIcon", () => {
   const testList = { "id": 1, "title": "Dummy Title", "items": 
                       [ {"id": 1, "name": "First Item", "completed": false} ] }
 
-  const wrapper = shallow(<NewItem activeList={testList} saveActiveList={() => null} updateList={() => null}/>);
+  const wrapper = shallow(<NewItem activeList={testList} changeActiveList={() => null} updateList={() => null}/>);
   
   const inputForm = wrapper.find("input");
 
@@ -39,6 +39,42 @@ test("adds a new item to the active list", () => {
   wrapper.find(AddIcon).simulate("click");
 
   const expected = {"id": 1, "items": [{"id": 1, "name": "First Item", "completed": false}, {"id": 2, "name": "New Item", "completed": false,}], "title": "Dummy Title"}
+  
+  expect(wrapper.instance().props.activeList).toStrictEqual(expected);
+});
+
+test("adds a new item to the active list when press Enter", () => {
+  const testList = { "id": 1, "title": "Dummy Title", "items": 
+                      [ {"id": 1, "name": "First Item", "completed": false} ] }
+
+  const wrapper = shallow(<NewItem activeList={testList} changeActiveList={() => null} updateList={() => null}/>);
+  
+  const inputForm = wrapper.find("input");
+
+  inputForm.simulate("change", {target: {value: "New Item"}})
+
+  expect(wrapper.find("input").get(0).props.value).toEqual("New Item");
+
+  inputForm.simulate("keypress", {key: "Enter"});
+
+  const expected = {"id": 1, "items": [{"id": 1, "name": "First Item", "completed": false}, {"id": 2, "name": "New Item", "completed": false,}], "title": "Dummy Title"}
+  
+  expect(wrapper.instance().props.activeList).toStrictEqual(expected);
+});
+
+test("adds a new item to the empty active list", () => {
+  const testList = { "id": 1, "title": "Dummy Title", "items": 
+                      [ ] }
+
+  const wrapper = shallow(<NewItem activeList={testList} changeActiveList={() => null} updateList={() => null}/>);
+  
+  const inputForm = wrapper.find("input");
+
+  inputForm.simulate("change", {target: {value: "New Item"}})
+
+  inputForm.simulate("keypress", {key: "Enter"});
+
+  const expected = {"id": 1, "items": [{"id": 1, "name": "New Item", "completed": false}], "title": "Dummy Title"}
   
   expect(wrapper.instance().props.activeList).toStrictEqual(expected);
 });

@@ -18,7 +18,7 @@ class ListTitles extends Component {
 
   render() {
     let lists = <ul></ul>;
-    
+
     if (this.props.isLoaded) {
       let titles = this.getTitles();
 
@@ -27,7 +27,7 @@ class ListTitles extends Component {
           <ul key={title}>
             <li
               className={this.props.activeList && title === this.props.activeList.title ? "active-list" : "inactive-list"} 
-              onClick={() => this.props.saveActiveList(this.getActiveList(title))}>
+              onClick={() => this.props.changeActiveList(this.getActiveList(title))}>
               <CircleOutlinedIcon className="icon"/>
               {title}
             </li>
