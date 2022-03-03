@@ -23,7 +23,12 @@ class ListItem extends Component {
   }
   
   updateItemStatus() {
+    if (!this.state.immutable) {
+      return;
+    }
+
     this.props.item.completed = !this.props.item.completed;
+    this.props.saveActiveList(this.props.activeList);
     this.props.updateList();
   }
 
@@ -60,20 +65,22 @@ class ListItem extends Component {
     return (
       <div className="item">
         <Checkbox
-          defaultChecked={this.props.item.completed}
+          checked={this.props.item.completed}
           onChange={this.updateItemStatusHandler}
           icon={<CheckBoxOutlineBlankOutlinedIcon />}
           checkedIcon={<CheckBoxOutlinedIcon />}
           color="default"
           disableRipple
+          data-testid="checkBox"
         />
         <input
           className={this.props.item.completed ? "item-text completed-item" : "item-text"}
           type="text"
           value={this.state.itemName}
-          disabled={this.state.immutable}
+          readOnly={this.state.immutable}
           onChange={event => this.setItemNameHandler(event.target.value)}
-          onBlur={this.updateItemNameHandler}>
+          onBlur={this.updateItemNameHandler}
+          onClick={this.updateItemStatusHandler}>
         </input>
         <div className="icons">
           <EditIcon
