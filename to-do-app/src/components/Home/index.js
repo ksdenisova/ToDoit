@@ -14,7 +14,7 @@ class Home extends Component {
     }
 
     this.updateListHandler = this.putActiveList.bind(this);
-    this.saveActiveListHander = this.changeActiveList.bind(this);
+    this.changeActiveListHander = this.changeActiveList.bind(this);
     this.createNewListHandler = this.postNewList.bind(this);
     this.getAllListsHandler = this.getAllLists.bind(this);
     this.deleteListHandler = this.deleteActiveList.bind(this);
@@ -37,8 +37,8 @@ class Home extends Component {
     return fetch(url, {method: "POST", headers: new Headers({'content-type': 'application/json'}), body: JSON.stringify(list)});
   }
 
-  deleteActiveList() {
-    this.deleteList();
+  async deleteActiveList() {
+    await this.deleteList();
     this.changeActiveList(undefined);
     this.setState({ isLoaded: false })
     this.getAllLists();
@@ -58,11 +58,11 @@ class Home extends Component {
   getAllLists() {
     fetch("http://localhost:3001/lists/")
     .then(response => response.json())
-    .then(json => json.sort((x,y) => y.id - x.id))
     .then(lists => {
       this.setState({
         toDoLists: lists,
-        isLoaded: true
+        isLoaded: true,
+        activeList: lists[0]
       })
     })
   }
@@ -87,7 +87,7 @@ class Home extends Component {
           <ListTitles
             isLoaded={this.state.isLoaded}
             toDoLists={this.state.toDoLists}
-            saveActiveList={this.saveActiveListHander}
+            changeActiveList={this.changeActiveListHander}
             deleteActiveList={this.deleteListHandler}
             createList={this.createNewListHandler}
             getAllLists={this.getAllListsHandler}
@@ -97,7 +97,7 @@ class Home extends Component {
         <div className="item-box">
           <ListView
             activeList={this.state.activeList}
-            saveActiveList={this.saveActiveListHander}
+            changeActiveList={this.changeActiveListHander}
             updateList={this.updateListHandler}
           />
         </div>

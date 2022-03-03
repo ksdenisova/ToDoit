@@ -26,14 +26,14 @@ class ListItem extends Component {
     this.props.item.completed = !this.props.item.completed;
     this.props.updateList();
   }
-
-  deleteItem () {
+  
+  deleteItem() {
     let removalItemId = this.props.item.id;
     let remainingItems = this.props.activeList.items.filter((item) => {
-        return item.id != removalItemId});
+        return item.id !== removalItemId});
 
     this.props.activeList.items = remainingItems;
-    this.props.saveActiveList(this.props.activeList);
+    this.props.changeActiveList(this.props.activeList);
     this.props.updateList();
   }
 

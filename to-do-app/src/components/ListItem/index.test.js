@@ -79,7 +79,7 @@ test("removes an item from active list", () => {
   const itemToDelete = {"id": 2, "name": "Should Be Deleted", "completed": false}
 
   const wrapper = shallow(<ListItem activeList={testList}
-                                    saveActiveList={(list) => list}
+                                    changeActiveList={(list) => list}
                                     item={itemToDelete}
                                     updateList={() => null}/>);
   
