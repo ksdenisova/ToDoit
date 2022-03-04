@@ -38,11 +38,16 @@ class ListView extends Component {
       <div>
         <div className="active-list-box">
           <h3 className="active-list-header">{title}</h3>
-          <progress
-            className="progress-bar"
-            max={progressMaxValue}
-            value={progressValue}>
-          </progress>
+          <div className="progress-box">
+            <progress
+              max={progressMaxValue}
+              value={progressValue}>
+            </progress>
+            <label
+              data-testid="label">
+              {progressValue + "/" + progressMaxValue}
+            </label>
+          </div>
         </div>
         <div className="items">
           {view}

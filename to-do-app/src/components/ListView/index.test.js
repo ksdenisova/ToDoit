@@ -72,3 +72,17 @@ test("the progress bar is not filled if there is no items in active list", () =>
   expect(progressBar).toHaveAttribute("value", "0");
   expect(progressBar).toHaveAttribute("max", "0");
 });
+
+test("the progress bar has a text label 'completed/total'", () => {
+  const testList = {"title": "First Test Title", "items": [
+    {"id": 1, "name": "First Item", "completed": true},
+    {"id": 2, "name": "Second Item", "completed": false},
+    {"id": 3, "name": "Third Item", "completed": true},
+    {"id": 4, "name": "Forth Item", "completed": true}]}
+
+  render(<ListView activeList={testList}/>);
+
+  const label = screen.getByTestId("label");
+
+  expect(label).toHaveTextContent("3/4");
+});
