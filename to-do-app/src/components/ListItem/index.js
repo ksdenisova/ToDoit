@@ -24,6 +24,7 @@ class ListItem extends Component {
   
   updateItemStatus() {
     this.props.item.completed = !this.props.item.completed;
+    this.props.changeActiveList(this.props.activeList);
     this.props.updateList();
   }
   
