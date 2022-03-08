@@ -52,8 +52,8 @@ test("checkbox completed switches states after click", () => {
 
   const checkbox = screen.getByRole("checkbox");
 
-  fireEvent.click(checkbox);
-
+  fireEvent.change(checkbox, { target: {checked: false}})
+  
   expect(checkbox.checked).toBeFalsy();
 });
 
@@ -90,7 +90,6 @@ test("removes an item from active list", () => {
   expect(wrapper.instance().props.activeList).toEqual(expected);
 });
 
-
 test("renders edit button icon", () => {
   const testItem = {"id": 1, "name": "First Item", "completed": false}
 
@@ -101,14 +100,14 @@ test("renders edit button icon", () => {
   expect(icon).toBeInTheDocument();
 });
 
-test("item is disabled for editing by default", () => {
+test("item is readonly for editing by default", () => {
   const testItem = {"id": 1, "name": "First Item", "completed": false}
 
-  render(<ListItem item={testItem}/>);
+  const wrapper = shallow(<ListItem item={testItem}/>);
 
-  const item = screen.getByRole("textbox");
+  const item = wrapper.find("input");
 
-  expect(item).toBeDisabled();
+  expect(item.prop('readOnly')).toEqual(true);
 });
 
 test("item is editable when click EditIcon", () => {
@@ -121,7 +120,7 @@ test("item is editable when click EditIcon", () => {
 
   const item = wrapper.find("input");
 
-  expect(item.prop('disabled')).toEqual(false);
+  expect(item.prop('readOnly')).toEqual(false);
 });
 
 test("changes an item for active list", () => {
@@ -143,4 +142,58 @@ test("changes an item for active list", () => {
   const expected = {"id": 1, "items": [{"id": 1, "name": "Edited Item", "completed": false}], "title": "Dummy Title"}
   
   expect(wrapper.instance().props.activeList).toStrictEqual(expected);
+});
+
+test("uses 'complited-item' style selector if item is completed", () => {
+  const testItem = {"id": 1, "name": "First Item", "completed": true};
+
+  const wrapper = shallow(<ListItem item={testItem}/>);
+
+  const item = wrapper.find("input");
+
+  expect(item.hasClass('item-text completed-item')).toBeTruthy();
+});
+
+test("uses 'hidden' style selector for icons if item is completed", () => {
+  const testItem = {"id": 1, "name": "First Item", "completed": true};
+
+  const wrapper = shallow(<ListItem item={testItem}/>);
+
+  const editIcon = wrapper.find(EditIcon);
+  const deleteIcon = wrapper.find(DeleteIcon);
+
+  expect(editIcon.hasClass('hidden')).toBeTruthy();
+  expect(deleteIcon.hasClass('hidden')).toBeTruthy();
+});
+
+test("doesn't remove completed item", () => {
+  const testItem = {"id": 1, "name": "Should Not Be Deleted", "completed": true}
+  const testList = { "id": 1, "title": "Dummy Title", "items": 
+                      [ testItem ] }
+
+  const wrapper = shallow(<ListItem activeList={testList}
+                                    saveActiveList={(list) => list}
+                                    item={testItem}
+                                    updateList={() => null}/>);
+  
+  wrapper.find(DeleteIcon).simulate("click");
+  
+  expect(wrapper.instance().props.activeList).toEqual(testList);
+});
+
+test("strikeout item and mark as completed on click", () => {
+  const testItem = {"id": 1, "name": "First Item", "completed": false}
+
+  const wrapper = shallow(<ListItem item={testItem} updateList={() => null} saveActiveList={() => null}/>);
+
+  render(<ListItem item={testItem} updateList={() => null} saveActiveList={() => null}/>);
+
+  const item = wrapper.find("input");
+  item.simulate("click");
+
+  wrapper.instance().forceUpdate()
+  const updatedItem = wrapper.find("input");
+
+  expect(wrapper.instance().props.item.completed).toBeTruthy();
+  expect(updatedItem.hasClass('item-text completed-item')).toBeTruthy();
 });

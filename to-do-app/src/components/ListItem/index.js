@@ -23,12 +23,20 @@ class ListItem extends Component {
   }
   
   updateItemStatus() {
+    if (!this.state.immutable) {
+      return;
+    }
+
     this.props.item.completed = !this.props.item.completed;
     this.props.changeActiveList(this.props.activeList);
     this.props.updateList();
   }
-  
+
   deleteItem() {
+    if (this.props.item.completed) {
+      return;
+    }
+
     let removalItemId = this.props.item.id;
     let remainingItems = this.props.activeList.items.filter((item) => {
         return item.id !== removalItemId});
@@ -57,29 +65,31 @@ class ListItem extends Component {
     return (
       <div className="item">
         <Checkbox
-          defaultChecked={this.props.item.completed}
+          checked={this.props.item.completed}
           onChange={this.updateItemStatusHandler}
           icon={<CheckBoxOutlineBlankOutlinedIcon />}
           checkedIcon={<CheckBoxOutlinedIcon />}
           color="default"
           disableRipple
+          data-testid="checkBox"
         />
         <input
-          className="item-text"
+          className={this.props.item.completed ? "item-text completed-item" : "item-text"}
           type="text"
           value={this.state.itemName}
-          disabled={this.state.immutable}
+          readOnly={this.state.immutable}
           onChange={event => this.setItemNameHandler(event.target.value)}
-          onBlur={this.updateItemNameHandler}>
+          onBlur={this.updateItemNameHandler}
+          onClick={this.updateItemStatusHandler}>
         </input>
         <div className="icons">
           <EditIcon
-            className="edit-icon"
+            className={this.props.item.completed ?  "hidden" :  "edit-icon"}
             data-testid="editIcon"
             onClick={this.setImmutableHandler}
           />
           <DeleteIcon 
-            className="delete-icon"
+            className={this.props.item.completed ?  "hidden" :  "delete-icon"}
             data-testid="deleteIcon"
             onClick={this.deleteItemHandler}
           />

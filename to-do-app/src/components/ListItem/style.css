@@ -19,6 +19,10 @@
   background-color: transparent;
 }
 
+.item input[readonly] {
+  cursor: pointer;
+}
+
 .item:hover {
   background-color: #F3F4F9;
   border-radius: 10px 10px 10px 10px;
@@ -39,4 +43,14 @@
 .delete-icon {
   margin-right: 12px;
   color: #E47B7B;
+}
+
+.completed-item {
+  text-decoration: line-through;
+  font-style: italic;
+  color: #757575;
+}
+
+.hidden {
+  visibility: hidden;
 }
