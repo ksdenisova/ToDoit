@@ -184,9 +184,9 @@ test("doesn't remove completed item", () => {
 test("strikeout item and mark as completed on click", () => {
   const testItem = {"id": 1, "name": "First Item", "completed": false}
 
-  const wrapper = shallow(<ListItem item={testItem} updateList={() => null} saveActiveList={() => null}/>);
+  const wrapper = shallow(<ListItem item={testItem} updateList={() => null} changeActiveList={() => null}/>);
 
-  render(<ListItem item={testItem} updateList={() => null} saveActiveList={() => null}/>);
+  render(<ListItem item={testItem} updateList={() => null} changeActiveList={() => null}/>);
 
   const item = wrapper.find("input");
   item.simulate("click");
