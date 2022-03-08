@@ -48,7 +48,7 @@ test("checkbox is marked if item is done", () => {
 test("checkbox completed switches states after click", () => {
   const testItem = {"id": 1, "name": "First Item", "completed": true}
 
-  render(<ListItem item={testItem} updateList={() => null} saveActiveList={() => null}/>);
+  render(<ListItem item={testItem} updateList={() => null} changeActiveList={(list) => list}/>);
 
   const checkbox = screen.getByRole("checkbox");
 
@@ -60,9 +60,9 @@ test("checkbox completed switches states after click", () => {
 test("changes the status of active list", () => {
   const testItem = {"id": 1, "name": "First Item", "completed": false}
 
-  const wrapper = shallow(<ListItem item={testItem} updateList={() => null} saveActiveList={() => null}/>);
+  const wrapper = shallow(<ListItem item={testItem} updateList={() => null} changeActiveList={(list) => list}/>);
   
-  render(<ListItem item={testItem} updateList={() => null} saveActiveList={() => null}/>);
+  render(<ListItem item={testItem} updateList={() => null} changeActiveList={(list) => list}/>);
 
   const checkbox = screen.getByRole("checkbox");
 
@@ -184,9 +184,9 @@ test("doesn't remove completed item", () => {
 test("strikeout item and mark as completed on click", () => {
   const testItem = {"id": 1, "name": "First Item", "completed": false}
 
-  const wrapper = shallow(<ListItem item={testItem} updateList={() => null} saveActiveList={() => null}/>);
+  const wrapper = shallow(<ListItem item={testItem} updateList={() => null} changeActiveList={() => null}/>);
 
-  render(<ListItem item={testItem} updateList={() => null} saveActiveList={() => null}/>);
+  render(<ListItem item={testItem} updateList={() => null} changeActiveList={() => null}/>);
 
   const item = wrapper.find("input");
   item.simulate("click");

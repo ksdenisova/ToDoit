@@ -7,6 +7,8 @@ class ListView extends Component {
   render() {
     let view;
     let title;
+    let progressMaxValue = this.props.activeList ? this.props.activeList.items.length : 0;
+    let progressValue = this.props.activeList ? this.props.activeList.items.filter(i => i.completed).length : 0;
 
     if (this.props.activeList === undefined) {
       view = <div className='Logo-Container'> <img src="/8L.png" className="App-logo" alt="logo" /></div>;
@@ -34,8 +36,18 @@ class ListView extends Component {
 
     return (
       <div>
-        <div>
+        <div className="active-list-box">
           <h3 className="active-list-header">{title}</h3>
+          <div className="progress-box">
+            <progress
+              max={progressMaxValue}
+              value={progressValue}>
+            </progress>
+            <label
+              data-testid="label">
+              {progressValue + "/" + progressMaxValue}
+            </label>
+          </div>
         </div>
         <div className="items">
           {view}

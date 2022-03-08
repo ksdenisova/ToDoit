@@ -1,8 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,100&display=swap');
 
+.active-list-box {
+  display: flex;
+  justify-content: space-between;
+  height: 120px;
+}
+
 .active-list-header {
-  margin-top: 46px;
-  margin-bottom: 46px;
+  display: flex;
+  align-items: center;
   margin-left: 38px;
   font-family: 'Roboto', sans-serif;
   font-style: normal;
@@ -19,4 +25,33 @@
   height: 339px;
   top: 399px;
   background: #FFFFFF;
+}
+
+.progress-box {
+  display: flex;
+  align-items: center;
+  margin-right: 51px;
+}
+
+progress {
+  height: 23px;
+  border-radius: 6px;
+  border: 0px;
+  width: 266px;
+  background-color: #757575;
+}
+
+progress::-webkit-progress-bar {
+  border-radius: 6px;
+}
+
+progress::-webkit-progress-value {
+  border-radius: 6px;
+  background: #4CAF50;
+}
+
+label {
+  padding-left: 22px;
+  font-size: 18px;
+  color: #757575;
 }
