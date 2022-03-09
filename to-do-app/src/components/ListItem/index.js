@@ -55,7 +55,12 @@ class ListItem extends Component {
   }
 
   updateItemName() {
+    // if (!this.state.immutable) {
+    //   return;
+    // }
+    
     this.props.item.name = this.state.itemName;
+    // this.props.changeActiveList(this.props.activeList);
     this.props.updateList();
 
     this.setImmutable();
