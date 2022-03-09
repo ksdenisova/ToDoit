@@ -32,7 +32,7 @@ class ListItem extends Component {
     this.props.updateList();
   }
 
-  deleteItem() {
+  async deleteItem() {
     if (this.props.item.completed) {
       return;
     }
@@ -43,7 +43,7 @@ class ListItem extends Component {
 
     this.props.activeList.items = remainingItems;
     this.props.changeActiveList(this.props.activeList);
-    this.props.updateList();
+    await this.props.updateList();
   }
 
   setImmutable() {
@@ -55,7 +55,12 @@ class ListItem extends Component {
   }
 
   updateItemName() {
+    if (this.state.immutable) {
+      return;
+    }
+    
     this.props.item.name = this.state.itemName;
+    this.props.changeActiveList(this.props.activeList);
     this.props.updateList();
 
     this.setImmutable();

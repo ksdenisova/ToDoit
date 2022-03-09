@@ -128,7 +128,7 @@ test("changes an item for active list", () => {
   const testList = { "id": 1, "title": "Dummy Title", "items": 
                       [ testItem ] }
 
-  const wrapper = shallow(<ListItem activeList={testList} item={testItem} updateList={() => null}/>);
+  const wrapper = shallow(<ListItem activeList={testList} item={testItem} updateList={() => null} changeActiveList={() => null}/>);
 
   const icon = wrapper.find(EditIcon);
   icon.simulate('click');
@@ -172,7 +172,6 @@ test("doesn't remove completed item", () => {
                       [ testItem ] }
 
   const wrapper = shallow(<ListItem activeList={testList}
-                                    saveActiveList={(list) => list}
                                     item={testItem}
                                     updateList={() => null}/>);
   
