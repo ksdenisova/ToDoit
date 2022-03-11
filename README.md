@@ -1,73 +1,56 @@
-# To_Do_List
-React front end for a To Do app. This app will consume a JSON server through a request endpoint. 
+# To Doit
+React front end app `To Doit` that allows you to create To Do lists. This app will consume a [JSON Server](https://github.com/typicode/json-server) through a request endpoint.
 
-# Getting Started with Create React App
+# How to Setup
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To set up To Doit, run the following commands in your Terminal:
 
-## Available Scripts
+`git@github.com:ksdenisova/ToDoit.git`
 
-In the project directory, you can run:
+`cd ToDoit`
 
-### `npm start`
+# How to Run JSON Server
 
-Runs the app in the development mode.\
+Install the JSON Server following the [instruction](https://github.com/typicode/json-server) and run these commands in the Terminal to start the JSON Server:
+
+`cd json_server`
+
+`json-server --watch db.json --port 3001`
+
+The JSON Server will start on port 3001.
+
+# How to Run To Doit app
+
+Run the following commands in the separate Terminal window:
+
+`cd to-do-app`
+
+Install dependencies before the first run:
+
+`npm install`
+
+Start the To Doit app:
+
+`npm start`
+
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The page will reload when you make changes. You may also see any lint errors in the console.
 
-### `npm test`
+# How to Run the Tests
+To run the Unit tests, run this command in the Terminal:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`npm test`
 
-### `npm run build`
+Launches the test runner in the interactive watch mode. See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# How to Use To Doit app
+<img width="1572" alt="image" src="https://user-images.githubusercontent.com/89826596/157936295-ca35b267-e41c-423e-9860-3d7dd4ec77b1.png">
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Enter a new To Doit list title, click `+` button, or press `Enter` to save.
+2. Switch between lists clicking on titles.
+3. To delete an active list, click on the `Delete List` button.
+4. Add a new To Doit item in ListView.
+5. Hover an item to see the `edit` and `delete` buttons.
+6. Mark the item as done by clicking on the checkbox or the item name.
+7. You can't delete a completed item.
